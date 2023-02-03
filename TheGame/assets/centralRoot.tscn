@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/Material.material" type="Material" id=1]
+[ext_resource path="res://assets/materials/centralRoot.material" type="Material" id=1]
 [ext_resource path="res://assets/models/centralRoot.material" type="Material" id=2]
 
 [sub_resource type="ArrayMesh" id=1]
