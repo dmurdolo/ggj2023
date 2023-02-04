@@ -2,12 +2,23 @@
 
 [ext_resource path="res://TestMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/centralRoot.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scripts/cameraControl.gd" type="Script" id=3]
+[ext_resource path="res://scripts/CameraControl.gd" type="Script" id=3]
 [ext_resource path="res://assets/prefabs/GameManager.tscn" type="PackedScene" id=4]
 [ext_resource path="res://TestNodes.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Audio/when_the_bugs_attack.mp3" type="AudioStream" id=6]
 
-[node name="Spatial" type="Spatial"]
+[sub_resource type="Environment" id=1]
+
+[node name="Level" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
+transform = Transform( 0.707107, 0.454519, -0.541675, 0, 0.766044, 0.642788, 0.707107, -0.454519, 0.541675, -25.4662, 66.9224, 28.1487 )
+light_color = Color( 0.729412, 0.764706, 0.592157, 1 )
+directional_shadow_mode = 0
+directional_shadow_normal_bias = 0.0
 
 [node name="GameManager" parent="." instance=ExtResource( 4 )]
 
@@ -16,17 +27,19 @@
 [node name="TestNodes" parent="." instance=ExtResource( 5 )]
 
 [node name="centralRoot" parent="." instance=ExtResource( 2 )]
+transform = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, 0, 0, 0 )
 
 [node name="Pivot" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.82729 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.387863, 30, 38.8881 )
 script = ExtResource( 3 )
-SCROLL_SPEED = 15.0
-MAP_BOUNDARY = 45
+ZOOM_SPEED = 5.0
+ZOOM_MAX = 35.0
 
 [node name="Camera" type="Camera" parent="Pivot"]
-transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 10 )
-current = true
-size = 50.0
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 11.391, 10 )
+fov = 35.0
+size = 30.0
+far = 500.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )

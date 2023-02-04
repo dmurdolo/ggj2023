@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/Mob.gd" type="Script" id=1]
 [ext_resource path="res://assets/models/mob.glb" type="PackedScene" id=2]
+[ext_resource path="res://assets/models/Beetle_placeholder.glb" type="PackedScene" id=3]
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 0.679112, 0.544173, 1.10029 )
@@ -90,6 +91,30 @@ tracks/2/keys = {
 "args": [  ],
 "method": "_on_Attack_hit"
 } ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Pivot/Beetle_placeholder:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 3.24901, 1, 3.03143, 1.51572 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 2.52718, 0 ), Vector3( 0, 2.389, 0 ), Vector3( 0, 2.21495, -0.656026 ), Vector3( 0, 2.04977, -0.637286 ), Vector3( 0, 0, -0.241 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Pivot/Beetle_placeholder:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 7.99999, 8.57419 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 23.315, 0, 0 ), Vector3( -21.889, 0, 0 ), Vector3( -25.112, 0, 0 ), Vector3( -18.874, 0, 0 ), Vector3( -21.053, 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -192,9 +217,13 @@ max_speed = 10
 
 [node name="Character" parent="Pivot" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0 )
+visible = false
+
+[node name="Beetle_placeholder" parent="Pivot" instance=ExtResource( 3 )]
+transform = Transform( 0.3, 0, 0, 0, 0.278169, 0.112348, 0, -0.112348, 0.278169, 0, 2.13236, -0.646656 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52793, 0 )
+transform = Transform( 1.08853, 0, 0, 0, 1, 0, 0, 0, 1.36492, -0.0248889, 0.52793, -0.3133 )
 shape = SubResource( 3 )
 disabled = true
 
@@ -208,9 +237,10 @@ anims/move = SubResource( 8 )
 anims/waffle = SubResource( 7 )
 
 [node name="LargeArea" type="Area" parent="."]
+transform = Transform( 1.11889, 0, 0, 0, 1.17054, 0, 0, 0, 1.40761, 0, 0.579689, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="LargeArea"]
-transform = Transform( 12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, 0 )
+transform = Transform( 5.08804, 0, 0, 0, 3.05422, 0, 0, 0, 5.89548, 0, 0, 0 )
 shape = SubResource( 9 )
 
 [connection signal="body_shape_entered" from="LargeArea" to="." method="_on_LargeArea_body_shape_entered"]
