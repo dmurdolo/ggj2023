@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://TestMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/centralRoot.tscn" type="PackedScene" id=2]
@@ -15,8 +15,8 @@
 environment = SubResource( 1 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
-transform = Transform( 0.707107, 0.454519, -0.541675, 0, 0.766044, 0.642788, 0.707107, -0.454519, 0.541675, -25.4662, 66.9224, 28.1487 )
-light_color = Color( 0.729412, 0.764706, 0.592157, 1 )
+transform = Transform( 0.707107, 0.454519, -0.541675, 0, 0.766045, 0.642787, 0.707107, -0.454519, 0.541675, -25.4662, 66.9224, 28.1487 )
+light_color = Color( 0.639216, 0.643137, 0.564706, 1 )
 directional_shadow_mode = 0
 directional_shadow_normal_bias = 0.0
 
@@ -30,10 +30,12 @@ directional_shadow_normal_bias = 0.0
 transform = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, 0, 0, 0 )
 
 [node name="Pivot" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.387863, 30, 38.8881 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.388, 30, 38.888 )
 script = ExtResource( 3 )
-ZOOM_SPEED = 5.0
-ZOOM_MAX = 35.0
+SCROLL_SPEED = 15.0
+ZOOM_SPEED = 10.0
+ZOOM_MIN = 10.0
+ZOOM_MAX = 40.0
 
 [node name="Camera" type="Camera" parent="Pivot"]
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 11.391, 10 )
