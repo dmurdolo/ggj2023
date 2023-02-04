@@ -9,6 +9,15 @@
 [ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Environment" id=1]
+fog_enabled = true
+fog_color = Color( 0.576471, 0.564706, 0.498039, 1 )
+fog_sun_color = Color( 0.639216, 0.643137, 0.564706, 1 )
+fog_sun_amount = 0.36
+fog_depth_curve = 6.72716
+fog_transmit_enabled = true
+fog_transmit_curve = 0.594604
+fog_height_min = 1.0
+fog_height_curve = 0.353554
 
 [node name="Level" type="Spatial"]
 
@@ -35,13 +44,13 @@ ZOOM_MIN = 10.0
 ZOOM_MAX = 40.0
 
 [node name="Camera" type="Camera" parent="Pivot"]
-transform = Transform( 0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 11.391, 10 )
+transform = Transform( 0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 11.391, 5 )
 fov = 35.0
 size = 30.0
 far = 500.0
 
 [node name="DirectionalLight" type="DirectionalLight" parent="Pivot"]
-transform = Transform( 0.707107, -0.454519, 0.541675, 0, 0.766044, 0.642788, -0.707107, -0.454519, 0.541675, 0, 36.922, 0 )
+transform = Transform( 0.707107, -0.454519, 0.541675, 0, 0.766045, 0.642787, -0.707107, -0.454519, 0.541675, 0, 6.69725, 5 )
 light_color = Color( 0.639216, 0.643137, 0.564706, 1 )
 directional_shadow_mode = 0
 directional_shadow_normal_bias = 0.0
