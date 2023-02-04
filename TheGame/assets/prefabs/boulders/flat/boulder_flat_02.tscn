@@ -17,7 +17,7 @@ surfaces/0 = {
 }
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 5.87328, 4.56767, 8.86915 )
+extents = Vector3( 5.87328, 4.13905, 7.7925 )
 
 [node name="boulder_flat_02" type="StaticBody"]
 
@@ -27,5 +27,5 @@ mesh = SubResource( 1 )
 material/0 = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 0.931112, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.349427, 0 )
+transform = Transform( 0.931112, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.349427, -0.36997 )
 shape = SubResource( 2 )
