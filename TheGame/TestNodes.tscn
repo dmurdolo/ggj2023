@@ -4,44 +4,44 @@
 
 [node name="TestNodes" type="Spatial"]
 
-[node name="Spatial" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.76956, 3.8147e-06, -37.5702 )
+[node name="Spatial1" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95015, 3.8147e-06, -37.5702 )
 team_spawn = "red"
 next_tower_1 = NodePath("../Spatial2")
 next_tower_2 = NodePath("../Spatial10")
 
 [node name="Spatial2" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3211, 3.8147e-06, -21.0959 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.3446, 3.8147e-06, -21.0959 )
 next_tower_1 = NodePath("../Spatial3")
 
 [node name="Spatial3" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.917, 7.62939e-06, -5.47002 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -47.0908, 7.62939e-06, -7.20076 )
 next_tower_1 = NodePath("../Spatial4")
 
 [node name="Spatial4" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2616, 1.14441e-05, 10.7623 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.488, 1.14441e-05, 12.9427 )
 next_tower_1 = NodePath("../Spatial5")
 
 [node name="Spatial5" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8872, 1.14441e-05, 24.1531 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8872, 1.14441e-05, 48.5881 )
 next_tower_1 = NodePath("../Spatial6")
 
 [node name="Spatial6" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86288, 1.14441e-05, 37.7457 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0892, 1.14441e-05, 43.1321 )
 team_spawn = "blue"
 
 [node name="Spatial7" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5744, 1.14441e-05, 23.8614 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6791, 1.14441e-05, 28.7549 )
 next_tower_1 = NodePath("../Spatial6")
 
 [node name="Spatial8" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.8217, 1.14441e-05, 10.9377 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.7068, 1.14441e-05, 10.9377 )
 next_tower_1 = NodePath("../Spatial7")
 
 [node name="Spatial9" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.846, 1.14441e-05, -7.02631 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.9086, 1.14441e-05, -17.7886 )
 next_tower_1 = NodePath("../Spatial8")
 
 [node name="Spatial10" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6963, 1.14441e-05, -24.5317 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5408, 1.14441e-05, -29.6138 )
 next_tower_1 = NodePath("../Spatial9")
