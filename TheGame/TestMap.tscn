@@ -1,9 +1,19 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/materials/ground.material" type="Material" id=1]
 [ext_resource path="res://assets/materials/dirt.material" type="Material" id=2]
 [ext_resource path="res://assets/prefabs/boulders/flat/boulder_flat_01.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/prefabs/boulders/flat/boulder_flat_02.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/prefabs/boulders/flat/boulder_flat_03.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/prefabs/boulders/flat/boulder_flat_06.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/prefabs/boulders/flat/boulder_flat_07.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/prefabs/boulders/flat/boulder_flat_04.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/prefabs/boulders/flat/boulder_flat_05.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/prefabs/boulders/flat/boulder_flat_11.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/prefabs/boulders/flat/boulder_flat_09.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/prefabs/boulders/flat/boulder_flat_08.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/prefabs/boulders/flat/boulder_flat_10.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/prefabs/RootCluster.tscn" type="PackedScene" id=14]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -27,15 +37,93 @@ shape = SubResource( 2 )
 
 [node name="InfiniteGround" type="MeshInstance" parent="."]
 transform = Transform( 200, 0, 0, 0, 1, 0, 0, 0, 200, 0, -0.1, 0 )
-visible = false
 mesh = SubResource( 1 )
 skeleton = NodePath("../..")
 material/0 = ExtResource( 2 )
 
 [node name="boulders" type="Spatial" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="boulder_flat_01" parent="boulders" instance=ExtResource( 3 )]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 36.2811, -0.134532, -3.08729 )
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 38.4331, -0.134532, -3.08729 )
+
+[node name="boulder_flat_27" parent="boulders" instance=ExtResource( 3 )]
+transform = Transform( -0.54352, 0, 2.02844, 0, 2.1, 0, -2.02844, 0, -0.54352, -49.5669, -0.134532, -50.0873 )
+
+[node name="boulder_flat_15" parent="boulders" instance=ExtResource( 3 )]
+transform = Transform( 2.1, 0, -3.63731, 0, 3, 0, 3.63731, 0, 2.1, 38.4331, -0.134532, 47.9127 )
+
+[node name="boulder_flat_12" parent="boulders" instance=ExtResource( 3 )]
+transform = Transform( 2.59808, 0, 1.5, 0, 3, 0, -1.5, 0, 2.59808, -21.5669, -0.134532, 14.9127 )
+
+[node name="boulder_flat_22" parent="boulders" instance=ExtResource( 3 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 55.4331, -0.134532, 16.9127 )
+
+[node name="boulder_flat_23" parent="boulders" instance=ExtResource( 3 )]
+transform = Transform( 0.776457, 0, -2.89778, 0, 3, 0, 2.89778, 0, 0.776457, -12.5669, -0.134532, -57.0873 )
+
+[node name="boulder_flat_24" parent="boulders" instance=ExtResource( 3 )]
+transform = Transform( 2.31822, 0, 0.621166, 0, 3, 0, -0.621166, 0, 2.31822, 27.4331, -0.134532, -52.0873 )
+
+[node name="boulder_flat_25" parent="boulders" instance=ExtResource( 3 )]
+transform = Transform( 1.2, 0, -2.07846, 0, 3, 0, 2.07846, 0, 1.2, 4.43307, -0.134532, 54.9127 )
+
+[node name="boulder_flat_26" parent="boulders" instance=ExtResource( 3 )]
+transform = Transform( 2.07846, 0, 1.2, 0, 3, 0, -1.2, 0, 2.07846, 9.43307, -0.134532, 48.9127 )
 
 [node name="boulder_flat_02" parent="boulders" instance=ExtResource( 4 )]
 transform = Transform( 0.732495, 0, -0.680772, 0, 1, 0, 0.680772, 0, 0.732495, -39.6364, 0, -1.49012e-08 )
+
+[node name="boulder_flat_03" parent="boulders" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.073, 0, 21.3929 )
+
+[node name="boulder_flat_04" parent="boulders" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 21 )
+
+[node name="boulder_flat_05" parent="boulders" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -38 )
+
+[node name="boulder_flat_17" parent="boulders" instance=ExtResource( 9 )]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -50, 0, -33 )
+
+[node name="boulder_flat_06" parent="boulders" instance=ExtResource( 6 )]
+transform = Transform( 0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -21, 0, -31 )
+
+[node name="boulder_flat_07" parent="boulders" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, -26 )
+
+[node name="boulder_flat_18" parent="boulders" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 25, 0, 1 )
+
+[node name="boulder_flat_14" parent="boulders" instance=ExtResource( 7 )]
+transform = Transform( -5.24537e-08, 0, -1.2, 0, 1, 0, 1.2, 0, -5.24537e-08, 48, 0, -45 )
+
+[node name="boulder_flat_19" parent="boulders" instance=ExtResource( 7 )]
+transform = Transform( 0.848528, 0, -0.848528, 0, 1, 0, 0.848528, 0, 0.848528, 8, 0, -35 )
+
+[node name="boulder_flat_20" parent="boulders" instance=ExtResource( 7 )]
+transform = Transform( 0.695467, 0, 0.18635, 0, 1, 0, -0.18635, 0, 0.695467, -6, 0, -18 )
+
+[node name="boulder_flat_21" parent="boulders" instance=ExtResource( 7 )]
+transform = Transform( -0.509117, 0, -0.509117, 0, 1, 0, 0.509117, 0, -0.509117, -8, 0, 34 )
+
+[node name="boulder_flat_16" parent="boulders" instance=ExtResource( 7 )]
+transform = Transform( 0.831384, 0, -0.48, 0, 1, 0, 0.48, 0, 0.831384, -45, 0, -24 )
+
+[node name="boulder_flat_08" parent="boulders" instance=ExtResource( 12 )]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -20, 0, 44 )
+
+[node name="boulder_flat_09" parent="boulders" instance=ExtResource( 11 )]
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 16, 0, 30 )
+
+[node name="boulder_flat_13" parent="boulders" instance=ExtResource( 11 )]
+transform = Transform( 0.893505, 0, -0.893505, 0, 1, 0, 0.893505, 0, 0.893505, -42, 0, 40 )
+
+[node name="boulder_flat_10" parent="boulders" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 0, 0 )
+
+[node name="boulder_flat_11" parent="boulders" instance=ExtResource( 10 )]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -31, 0, -8 )
+
+[node name="RootCluster" parent="." instance=ExtResource( 14 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 34, 0, 49 )
