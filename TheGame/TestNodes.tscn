@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/prefabs/Tower.tscn" type="PackedScene" id=2]
 
-[node name="TestNodes" type="Spatial"]
+[node name="TowerNodes" type="Spatial"]
 transform = Transform( 0.997351, 0, 0, 0, 0.997351, 0, 0, 0, 0.997351, 0, 0, 0 )
 
 [node name="Spatial1" parent="." instance=ExtResource( 2 )]
@@ -13,36 +13,49 @@ next_tower_2 = NodePath("../Spatial10")
 
 [node name="Spatial2" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.3446, 3.8147e-06, -21.0959 )
+team_spawn = "red"
 next_tower_1 = NodePath("../Spatial3")
 
 [node name="Spatial3" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -47.0908, 7.62939e-06, -7.20076 )
+team_spawn = "red"
+next_tower_1 = NodePath("../Spatial4")
+
+[node name="Spatial11" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -47.9877, 7.62939e-06, 21.2215 )
+team_spawn = "red"
 next_tower_1 = NodePath("../Spatial4")
 
 [node name="Spatial4" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.488, 1.14441e-05, 12.9427 )
+team_spawn = "red"
 next_tower_1 = NodePath("../Spatial5")
 
 [node name="Spatial5" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8872, 1.14441e-05, 48.5881 )
+team_spawn = "red"
 next_tower_1 = NodePath("../Spatial6")
 
 [node name="Spatial6" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0892, 1.14441e-05, 43.1321 )
-team_spawn = "blue"
+team_spawn = "red"
 
 [node name="Spatial7" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6791, 1.14441e-05, 28.7549 )
+team_spawn = "red"
 next_tower_1 = NodePath("../Spatial6")
 
 [node name="Spatial8" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3394, 1.14441e-05, 10.9377 )
+team_spawn = "red"
 next_tower_1 = NodePath("../Spatial7")
 
 [node name="Spatial9" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.9086, 1.14441e-05, -17.7886 )
+team_spawn = "red"
 next_tower_1 = NodePath("../Spatial8")
 
 [node name="Spatial10" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5408, 1.14441e-05, -29.6138 )
+team_spawn = "red"
 next_tower_1 = NodePath("../Spatial9")
