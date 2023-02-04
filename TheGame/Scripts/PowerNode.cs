@@ -1,39 +1,27 @@
 using Godot;
 using System;
+using System.Linq;
+
+public enum PowerNodeType 
+{
+	None,
+	Power,
+	Attack,
+	Decay
+};
 
 public class PowerNode : Node
 {
-	// Declare member variables here. Examples:
-	// private int a = 2;
-	// private string b = "text";
+	public PowerNodeType Type { get; set; }
+	public bool IsOptionsOpen { get; set; }
+
+	private bool isOptionsInitialised = false;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		GD.Print("[PowerNode] Ready");
-	}
-
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
-
-	public override void _Input(InputEvent inputEvent)
-	{
-		/*if (inputEvent is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
-		{
-			switch ((ButtonList) mouseEvent.ButtonIndex)
-			{
-				case ButtonList.Left:
-					GD.Print($"Left button was clicked at {mouseEvent.Position}");
-					break;
-					
-				case ButtonList.WheelUp:
-					GD.Print("Wheel up");
-					break;
-			}
-		}*/
+		//GD.Print("[PowerNode] Ready");
+		IsOptionsOpen = false;
 	}
 	
 	private void _on_StaticBody_input_event(object camera, object @event, Vector3 position, Vector3 normal, int shape_idx)
@@ -41,10 +29,44 @@ public class PowerNode : Node
 		if (@event is InputEventMouseButton eventMouseButton && eventMouseButton.Pressed && eventMouseButton.ButtonIndex == 1)
 		{
 			GD.Print("[PowerNode] Left Click");
-			
-			//var camera = GetNode<Camera>("Camera");
-			//var from = camera.ProjectRayOrigin(eventMouseButton.Position);
-			//var to = from + camera.ProjectRayNormal(eventMouseButton.Position) * rayLength;
+
+			// Options are closed
+			if (!IsOptionsOpen)
+			{
+				IsOptionsOpen = !IsOptionsOpen;
+
+				// First time
+				if (!isOptionsInitialised)
+				{
+					PackedScene scene = (PackedScene)ResourceLoader.Load("res://Scenes/OptionNode.tscn");
+						
+					Vector3[] locations = {
+						new Vector3(-1.5f, 1.6f, 0.0f),
+						new Vector3( 0.0f, 2.0f, 0.0f),
+						new Vector3( 1.5f, 1.6f, 0.0f)
+					};
+					
+					for (int i = 0; i < locations.Length; i++) {
+						OptionNode optionNode = (OptionNode)scene.Instance();
+						optionNode.Name = "OptionNode" + (i + 1);
+						optionNode.Type = PowerNodeType.Power;
+						optionNode.TweenFinalVal = locations[i];
+						optionNode.TweenDuration = 0.5f + 0.05f * (i + 1);
+						GetParent().AddChild(optionNode);
+						optionNode.ShowOptionNode();
+					}
+
+					isOptionsInitialised = true;
+				}
+
+				// Option nodes already exist
+				else
+				{
+					var optionNodes = GetParent().GetChildren().OfType<OptionNode>();
+					optionNodes.ToList().ForEach(i => i.ShowOptionNode());
+				}
+			}
+
 		}
 	}
 }
