@@ -3,6 +3,7 @@
 [ext_resource path="res://assets/prefabs/Tower.tscn" type="PackedScene" id=2]
 
 [node name="TestNodes" type="Spatial"]
+transform = Transform( 0.997351, 0, 0, 0, 0.997351, 0, 0, 0, 0.997351, 0, 0, 0 )
 
 [node name="Spatial1" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95015, 3.8147e-06, -37.5702 )
@@ -35,7 +36,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6791, 1.14441e-05, 28.7549 
 next_tower_1 = NodePath("../Spatial6")
 
 [node name="Spatial8" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.7068, 1.14441e-05, 10.9377 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3394, 1.14441e-05, 10.9377 )
 next_tower_1 = NodePath("../Spatial7")
 
 [node name="Spatial9" parent="." instance=ExtResource( 2 )]
