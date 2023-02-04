@@ -9,9 +9,6 @@ albedo_color = Color( 0.380392, 0.141176, 0.0156863, 1 )
 
 [node name="PowerNode" type="Spatial"]
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
-
 [node name="StaticBody" type="StaticBody" parent="."]
 script = ExtResource( 1 )
 

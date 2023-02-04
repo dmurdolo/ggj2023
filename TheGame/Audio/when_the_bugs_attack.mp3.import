@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/when_the_bugs_attack.mp3-c145e2fd74f39031291c1e52182e7548.mp3str"
+
+[deps]
+
+source_file="res://Audio/when_the_bugs_attack.mp3"
+dest_files=[ "res://.import/when_the_bugs_attack.mp3-c145e2fd74f39031291c1e52182e7548.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
