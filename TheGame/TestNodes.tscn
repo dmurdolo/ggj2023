@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/prefabs/Tower.tscn" type="PackedScene" id=2]
+
+[node name="TestNodes" type="Spatial"]
+
+[node name="Spatial" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.76956, 3.8147e-06, -37.5702 )
+team_spawn = "red"
+next_tower_1 = NodePath("../Spatial2")
+next_tower_2 = NodePath("../Spatial10")
+
+[node name="Spatial2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3211, 3.8147e-06, -21.0959 )
+next_tower_1 = NodePath("../Spatial3")
+
+[node name="Spatial3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.917, 7.62939e-06, -5.47002 )
+next_tower_1 = NodePath("../Spatial4")
+
+[node name="Spatial4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2616, 1.14441e-05, 10.7623 )
+next_tower_1 = NodePath("../Spatial5")
+
+[node name="Spatial5" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8872, 1.14441e-05, 24.1531 )
+next_tower_1 = NodePath("../Spatial6")
+
+[node name="Spatial6" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86288, 1.14441e-05, 37.7457 )
+team_spawn = "blue"
+
+[node name="Spatial7" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5744, 1.14441e-05, 23.8614 )
+next_tower_1 = NodePath("../Spatial6")
+
+[node name="Spatial8" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.8217, 1.14441e-05, 10.9377 )
+next_tower_1 = NodePath("../Spatial7")
+
+[node name="Spatial9" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.846, 1.14441e-05, -7.02631 )
+next_tower_1 = NodePath("../Spatial8")
+
+[node name="Spatial10" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6963, 1.14441e-05, -24.5317 )
+next_tower_1 = NodePath("../Spatial9")
