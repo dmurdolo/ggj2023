@@ -1,6 +1,6 @@
 using Godot;
 using System;
-using System.Linq; 	 	
+using System.Linq;
 
 public class PowerNode : Node
 {
@@ -26,6 +26,7 @@ public class PowerNode : Node
 	private bool isOptionsInitialised = false;
 	private OptionNode[] optionNodes = new OptionNode[3];
 
+	//private var gameManager;
 	private Label3D powerLabel;
 	private Spatial optionNodeParent;
 
@@ -34,7 +35,7 @@ public class PowerNode : Node
 	{
 		IsOptionsOpen = false;
 		IsOptionsTweening = false;
-
+		
 		powerLabel = GetParent().GetNode<Label3D>("PowerLabel");
 		powerLabel.Visible = false;
 
@@ -76,19 +77,28 @@ public class PowerNode : Node
 		if (@event is InputEventMouseButton eventMouseButton && eventMouseButton.Pressed && eventMouseButton.ButtonIndex == 1)
 		{
 			if (IsOptionsTweening) return;
+			
+			var gameManager = GetNode("/root/Level/GameManager");
 
 			// Options are closed
 			if (!IsOptionsOpen)
 			{
 				GD.Print("[PowerNode] Showing options");
 
+				// Close all previous OptionNodes
+				Node currentPowerNode = (Node)gameManager.Call("get_current_power_node");
+				if (currentPowerNode != null) {
+					((PowerNode)currentPowerNode).HideOptionNodes();
+				}
+
+				// Set state.
 				IsOptionsOpen = true;
 				IsOptionsTweening = true;
 
-				// First time
+				// First time opening options on this power node
 				if (!isOptionsInitialised)
 				{
-					GD.Print("[PowerNode] Init options");
+					//GD.Print("[PowerNode] Init options");
 					PackedScene scene = (PackedScene)ResourceLoader.Load("res://Scenes/OptionNode.tscn");
 					
 					Vector3[] locations = {
@@ -96,19 +106,9 @@ public class PowerNode : Node
 						new Vector3( 0.0f, 3.0f, -1.0f),
 						new Vector3( 2.0f, 1.5f, 0.0f)
 					};
-					
-					for (int i = 0; i < locations.Length; i++) {
-						OptionNode optionNode = (OptionNode)scene.Instance();
-						optionNode.IsTweening = true;
-						optionNode.Name = "OptionNode" + (i + 1);
-						optionNode.Type = (PowerNodeType)(i + 1);
-						optionNode.TweenFinalVal = locations[i];
-						optionNode.TweenDuration = 0.3f + 0.05f * (i + 1);
-						optionNodeParent.AddChild(optionNode);
-						optionNode.ShowOptionNode();
 
-						// Store the OptionNode in an array
-						optionNodes[i] = optionNode;
+					for (int i = 0; i < locations.Length; i++) {
+						CreateOptionNode(i, scene, locations[i]);
 					}
 
 					isOptionsInitialised = true;
@@ -119,16 +119,42 @@ public class PowerNode : Node
 				{
 					optionNodes.ToList().ForEach(i => i.ShowOptionNode());
 				}
+
+				// Set current state
+				gameManager.Call("set_current_power_node", this);
 			}
 
 			// Options are open
 			else if (IsOptionsOpen && !IsOptionsTweening)
 			{
 				GD.Print("[PowerNode] Hiding options");
-				optionNodes.ToList().ForEach(i => i.HideOptionNode());
-				IsOptionsOpen = false;
+
+				HideOptionNodes();
+				gameManager.Call("clear_current_power_node");
 			}
 
 		}
+	}
+
+	private void CreateOptionNode(int i, PackedScene scene, Vector3 tweenFinalVal)
+	{
+		OptionNode optionNode = (OptionNode)scene.Instance();
+		optionNode.IsTweening = true;
+		optionNode.Name = "OptionNode" + (i + 1);
+		optionNode.Type = (PowerNodeType)(i + 1);
+		optionNode.TweenFinalVal = tweenFinalVal;
+		optionNode.TweenDuration = 0.3f + 0.05f * (i + 1);
+		optionNodeParent.AddChild(optionNode);
+		optionNode.ShowOptionNode();
+
+		// Store the OptionNode in an array
+		optionNodes[i] = optionNode;
+	}
+
+	public void HideOptionNodes()
+	{
+		GD.Print("[PowerNode] Hiding options");
+		optionNodes.ToList().ForEach(i => i.HideOptionNode());
+		IsOptionsOpen = false;
 	}
 }
