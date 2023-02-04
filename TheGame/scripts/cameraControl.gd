@@ -58,20 +58,16 @@ func _input(event):
 
 func _process(delta):
 	if Input.is_key_pressed(KEY_W) or UP:
-		if outsideMapBoundary(-self.transform.origin.z, 20):
-			self.translate(Vector3(0,0,-SCROLL_SPEED*delta))
+		self.translate(Vector3(0,0,-SCROLL_SPEED*delta))
 
 	if Input.is_key_pressed(KEY_S) or DOWN:
-		if outsideMapBoundary(self.transform.origin.z, -35):
-			self.translate(Vector3(0,0,SCROLL_SPEED*delta))
+		self.translate(Vector3(0,0,SCROLL_SPEED*delta))
 
 	if Input.is_key_pressed(KEY_A) or LEFT:
-		if outsideMapBoundary(-self.transform.origin.x):
-			self.translate(Vector3(-SCROLL_SPEED*delta,0,0))
+		self.translate(Vector3(-SCROLL_SPEED*delta,0,0))
 
 	if Input.is_key_pressed(KEY_D) or RIGHT:
-		if outsideMapBoundary(self.transform.origin.x, 5):
-			self.translate(Vector3(SCROLL_SPEED*delta,0,0))
+		self.translate(Vector3(SCROLL_SPEED*delta,0,0))
 
 	if Input.is_key_pressed(KEY_Q):
 		self.rotate(Vector3(0,1,0),1*delta)
