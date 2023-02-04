@@ -2,6 +2,8 @@ extends Node
 
 export (PackedScene) var mob_prefab
 
+var DEBUG_SPAWN = true
+
 var blue_tower = null
 var red_tower = null
 var blue_path = []
@@ -25,7 +27,8 @@ func _ready():
 		blue_path = _generate_path(blue_tower, blue_tower, tower_edge_map, {}, true)
 	if red_tower:
 		red_path = _generate_path(red_tower, red_tower, tower_edge_map, {}, true)
-	do_spawn()
+	if (DEBUG_SPAWN):
+		do_spawn()
 
 func _map_edge(t1, t2_path, tower_edge_map):
 	if not t1 or not t2_path:
@@ -70,4 +73,5 @@ func do_spawn():
 
 
 func _on_Timer_timeout():
-	do_spawn()
+	if (DEBUG_SPAWN):
+		do_spawn()
