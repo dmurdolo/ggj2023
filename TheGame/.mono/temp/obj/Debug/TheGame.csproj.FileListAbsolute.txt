@@ -6,3 +6,12 @@ C:\Ben X Tan\Projects\GGJ2023\ggj2023\TheGame\.mono\temp\bin\Debug\TheGame.dll
 C:\Ben X Tan\Projects\GGJ2023\ggj2023\TheGame\.mono\temp\bin\Debug\TheGame.pdb
 C:\Ben X Tan\Projects\GGJ2023\ggj2023\TheGame\.mono\temp\obj\Debug\TheGame.dll
 C:\Ben X Tan\Projects\GGJ2023\ggj2023\TheGame\.mono\temp\obj\Debug\TheGame.pdb
+C:\Dev\Games\ggj2023\TheGame\.mono\temp\bin\Debug\TheGame.dll
+C:\Dev\Games\ggj2023\TheGame\.mono\temp\bin\Debug\TheGame.pdb
+C:\Dev\Games\ggj2023\TheGame\.mono\temp\obj\Debug\TheGame.csproj.AssemblyReference.cache
+C:\Dev\Games\ggj2023\TheGame\.mono\temp\obj\Debug\TheGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\Games\ggj2023\TheGame\.mono\temp\obj\Debug\TheGame.AssemblyInfoInputs.cache
+C:\Dev\Games\ggj2023\TheGame\.mono\temp\obj\Debug\TheGame.AssemblyInfo.cs
+C:\Dev\Games\ggj2023\TheGame\.mono\temp\obj\Debug\TheGame.csproj.CoreCompileInputs.cache
+C:\Dev\Games\ggj2023\TheGame\.mono\temp\obj\Debug\TheGame.dll
+C:\Dev\Games\ggj2023\TheGame\.mono\temp\obj\Debug\TheGame.pdb
