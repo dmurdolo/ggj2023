@@ -5,7 +5,21 @@ public class OptionNode : Spatial
 {
 	public Vector3 TweenFinalVal { get; set; }
 	public float TweenDuration{ get; set; }
-	public PowerNodeType Type { get; set; }
+
+	private PowerNodeType type;
+	public PowerNodeType Type {
+		get {
+			return type;
+		}
+		set {
+			type = value;
+
+			CSGSphere sphere = GetNode<CSGSphere>("StaticBody/CollisionShape/CSGSphere");
+			sphere.Material = (Material)sphere.Material.Duplicate();
+			((SpatialMaterial)sphere.Material).AlbedoColor = PowerNodeUtils.GetPowerNodeTypeColor(type);
+		}
+	}
+	
 	private Tween tween;
 
 	public override void _Ready()

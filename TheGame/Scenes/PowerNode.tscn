@@ -5,7 +5,7 @@
 [sub_resource type="SphereShape" id=1]
 
 [sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0, 1, 0, 1 )
+albedo_color = Color( 0.380392, 0.141176, 0.0156863, 1 )
 
 [node name="PowerNode" type="Spatial"]
 

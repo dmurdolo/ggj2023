@@ -12,7 +12,20 @@ public enum PowerNodeType
 
 public class PowerNode : Node
 {
-	public PowerNodeType Type { get; set; }
+	private PowerNodeType type;
+	public PowerNodeType Type {
+		get {
+			return type;
+		}
+		set {
+			type = value;
+			
+			CSGSphere sphere = GetNode<CSGSphere>("CollisionShape/CSGSphere");
+			sphere.Material = (Material)sphere.Material.Duplicate();
+			((SpatialMaterial)sphere.Material).AlbedoColor = PowerNodeUtils.GetPowerNodeTypeColor(type);
+		}
+	}
+
 	public bool IsOptionsOpen { get; set; }
 
 	private bool isOptionsInitialised = false;
@@ -39,7 +52,7 @@ public class PowerNode : Node
 				if (!isOptionsInitialised)
 				{
 					PackedScene scene = (PackedScene)ResourceLoader.Load("res://Scenes/OptionNode.tscn");
-						
+					
 					Vector3[] locations = {
 						new Vector3(-1.5f, 1.6f, 0.0f),
 						new Vector3( 0.0f, 2.0f, 0.0f),
@@ -49,7 +62,7 @@ public class PowerNode : Node
 					for (int i = 0; i < locations.Length; i++) {
 						OptionNode optionNode = (OptionNode)scene.Instance();
 						optionNode.Name = "OptionNode" + (i + 1);
-						optionNode.Type = PowerNodeType.Power;
+						optionNode.Type = (PowerNodeType)(i + 1);
 						optionNode.TweenFinalVal = locations[i];
 						optionNode.TweenDuration = 0.5f + 0.05f * (i + 1);
 						GetParent().AddChild(optionNode);
