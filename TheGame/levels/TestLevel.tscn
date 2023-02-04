@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://TestMap.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/centralRoot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/prefabs/CentralRoot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/CameraControl.gd" type="Script" id=3]
 [ext_resource path="res://assets/prefabs/GameManager.tscn" type="PackedScene" id=4]
 [ext_resource path="res://TestNodes.tscn" type="PackedScene" id=5]
@@ -26,11 +26,11 @@ directional_shadow_normal_bias = 0.0
 
 [node name="TestNodes" parent="." instance=ExtResource( 5 )]
 
-[node name="centralRoot" parent="." instance=ExtResource( 2 )]
-transform = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, 0, 0, 0 )
+[node name="CentralRoot" parent="." instance=ExtResource( 2 )]
+transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0 )
 
 [node name="Pivot" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.388, 30, 38.888 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 58.4232, 30, 57.606 )
 script = ExtResource( 3 )
 SCROLL_SPEED = 15.0
 ZOOM_SPEED = 10.0

@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://assets/models/boulders/boulder04.glb" type="PackedScene" id=1]
-
-[node name="boulder04" instance=ExtResource( 1 )]
-
-[node name="Cube019" parent="." index="0"]
-transform = Transform( 0.531918, 1.02494, 0.585562, 0.223382, 0.543261, -1.15382, -1.15909, 0.575054, 0.046355, 0, -0.038, 0 )
