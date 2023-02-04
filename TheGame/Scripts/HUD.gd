@@ -12,4 +12,4 @@ func _ready():
 #	pass
 
 func update_power():
-	$PowerLabel.set_text(String(game_manager.current_power))
+	$PowerLabel.set_text(String(game_manager.current_energy))

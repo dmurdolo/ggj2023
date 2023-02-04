@@ -42,8 +42,8 @@ public class OptionNode : Spatial
 		tween.Start();
 
 		var gameManager = GetNode("/root/Level/GameManager");
-		int currentPower = (int)gameManager.Call("get_current_power");
-		int maxPower = (int)gameManager.Call("get_max_power");
+		int currentEnergy = (int)gameManager.Call("get_current_energy");
+		int maxEnergy = (int)gameManager.Call("get_max_energy");
 
 		PowerNode powerNode = (PowerNode)GetParent().GetParent().GetNode("StaticBody");
 
@@ -54,7 +54,7 @@ public class OptionNode : Spatial
 				break;
 			
 			case PowerNodeType.PowerUp:
-				isPowerNodeValid = currentPower > 0;
+				isPowerNodeValid = currentEnergy > 0;
 				break;
 
 			case PowerNodeType.Growth:

@@ -2,10 +2,12 @@ extends Node
 
 export (PackedScene) var mob_prefab
 
-var DEBUG_SPAWN = false
+export var DEBUG_SPAWN = false
 
-var current_power:int = 10
-var max_power:int = 10
+export var enemySpawns = []
+
+var current_energy:int = 10
+var max_energy:int = 10
 var blue_tower = null
 var red_tower = null
 var blue_path = []
@@ -37,17 +39,17 @@ func _ready():
 	if (DEBUG_SPAWN):
 		do_spawn()
 
-func get_current_power() -> int:
-	return current_power
+func get_current_energy() -> int:
+	return current_energy
 
-func get_max_power() -> int:
-	return max_power
+func get_max_energy() -> int:
+	return max_energy
 
-func increase_current_power():
-	current_power += 1
+func increase_current_energy():
+	current_energy += 1
 	
-func decrease_current_power():
-	current_power -= 1
+func decrease_current_energy():
+	current_energy -= 1
 
 func init_nodes():
 	test_nodes = get_parent().get_node("TestNodes")
@@ -98,10 +100,10 @@ func do_spawn():
 	if blue_path:
 		teams.append({ "team": "blue", "enemy_team": "red", "enemy_tower": red_tower, "path": blue_path })
 	for team_data in teams:
-		var team = team_data["team"]
+		var _team = team_data["team"]
 		var path = team_data["path"]
 
-		for i in range(spawns_per_wave):
+		for _i in range(spawns_per_wave):
 			var mob = mob_prefab.instance()
 			add_child(mob)
 			mob.initialize(path, team_data["team"], team_data["enemy_team"])
