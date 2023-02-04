@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=2]
+
+[ext_resource path="res://fonts/KochRootsRoundBold.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=6]
+size = 30
+outline_size = 1
+font_data = ExtResource( 1 )
+
+[resource]
+Label/fonts/font = SubResource( 6 )

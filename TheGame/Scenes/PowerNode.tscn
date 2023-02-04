@@ -18,4 +18,11 @@ shape = SubResource( 1 )
 [node name="CSGSphere" type="CSGSphere" parent="StaticBody/CollisionShape"]
 material = SubResource( 2 )
 
+[node name="PowerLabel" type="Label3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+pixel_size = 0.1
+text = "1"
+
+[node name="OptionNodeParent" type="Spatial" parent="."]
+
 [connection signal="input_event" from="StaticBody" to="StaticBody" method="_on_StaticBody_input_event"]
