@@ -21,6 +21,7 @@ public class OptionNode : Spatial
 	}
 	
 	private Tween tween;
+	private bool isTweening = false;
 
 	public override void _Ready()
 	{
@@ -30,6 +31,9 @@ public class OptionNode : Spatial
 
 	public void ShowOptionNode()
 	{
+		if (isTweening) return;
+
+		isTweening = true;
 		Visible = true;
 		tween.InterpolateProperty(this, "translation", Vector3.Zero, TweenFinalVal, TweenDuration, Tween.TransitionType.Sine, Tween.EaseType.Out);
 		tween.Connect("tween_completed", this, "ShowCompleted");
@@ -38,12 +42,16 @@ public class OptionNode : Spatial
 
 	public void ShowCompleted(Godot.Object obj, NodePath key)
 	{
+		isTweening = false;
 		GetNode<AudioStreamPlayer>("AudioStreamPlayer").Play();
 		tween.Disconnect("tween_completed", this, "ShowCompleted");
 	}
 
 	public void HideOptionNode()
 	{
+		if (isTweening) return;
+
+		isTweening = true;
 		GetNode<AudioStreamPlayer>("AudioStreamPlayer").Play();
 		tween.InterpolateProperty(this, "translation", TweenFinalVal, Vector3.Zero, TweenDuration / 2.0f, Tween.TransitionType.Expo, Tween.EaseType.Out);
 		tween.Connect("tween_completed", this, "HideCompleted");
@@ -52,6 +60,7 @@ public class OptionNode : Spatial
 
 	public void HideCompleted(Godot.Object obj, NodePath key)
 	{
+		isTweening = false;
 		tween.Disconnect("tween_completed", this, "HideCompleted");
 		Visible = false;	
 	}

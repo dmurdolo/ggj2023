@@ -1,14 +1,6 @@
 using Godot;
 using System;
-using System.Linq;
-
-public enum PowerNodeType 
-{
-	None,
-	Power,
-	Attack,
-	Decay
-};
+using System.Linq; 	 	
 
 public class PowerNode : Node
 {
@@ -33,7 +25,6 @@ public class PowerNode : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		//GD.Print("[PowerNode] Ready");
 		IsOptionsOpen = false;
 	}
 	

@@ -1,5 +1,13 @@
 using Godot;
 
+public enum PowerNodeType 
+{
+	None,
+	Power,
+	Attack,
+	Decay
+};
+
 public class PowerNodeUtils
 {
     public static Color GetPowerNodeTypeColor(PowerNodeType type)
