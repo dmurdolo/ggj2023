@@ -3,8 +3,10 @@ using Godot;
 public enum PowerNodeType 
 {
 	None,
-	Power,
-	Attack,
+    PowerDown,
+	PowerUp,
+    Growth,
+	Defence,
 	Decay
 };
 
@@ -16,12 +18,20 @@ public class PowerNodeUtils
 
         switch (type)
         {
-            case PowerNodeType.Attack:
-                color = new Color("ff0000");
+            case PowerNodeType.PowerDown:
+                color = new Color("#00ff00");
+                break;
+            
+            case PowerNodeType.PowerUp:
+                color = new Color("#00ff00");
                 break;
 
-            case PowerNodeType.Power:
+            case PowerNodeType.Growth:
                 color = new Color("#00ff00");
+                break;
+            
+            case PowerNodeType.Defence:
+                color = new Color("ff0000");
                 break;
 
             case PowerNodeType.Decay:
@@ -30,5 +40,10 @@ public class PowerNodeUtils
         }
         
         return color;
+    }
+
+    public static Color GetDisabledPowerNodeColor()
+    {
+        return new Color("dddddd");
     }
 }

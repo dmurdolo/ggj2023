@@ -2,9 +2,10 @@ extends Node
 
 export (PackedScene) var mob_prefab
 
-var DEBUG_SPAWN = true
+var DEBUG_SPAWN = false
 
-var total_power = 10
+var current_power:int = 10
+var max_power:int = 10
 var blue_tower = null
 var red_tower = null
 var blue_path = []
@@ -35,6 +36,18 @@ func _ready():
 		red_path = _generate_path(red_tower, red_tower, tower_edge_map, {}, true)
 	if (DEBUG_SPAWN):
 		do_spawn()
+
+func get_current_power() -> int:
+	return current_power
+
+func get_max_power() -> int:
+	return max_power
+
+func increase_current_power():
+	current_power += 1
+	
+func decrease_current_power():
+	current_power -= 1
 
 func init_nodes():
 	test_nodes = get_parent().get_node("TestNodes")

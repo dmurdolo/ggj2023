@@ -21,12 +21,21 @@ public class PowerNode : Node
 		}
 	}
 
-	public int PowerLevel = 0;
+	private int powerLevel = 0;
+	public int PowerLevel {
+		get {
+			return powerLevel;
+		}
+		set {
+			powerLevel = value;
+
+			powerLabel.Text = PowerLevel.ToString();
+		}
+	}
 
 	private bool isOptionsInitialised = false;
-	private OptionNode[] optionNodes = new OptionNode[3];
+	private OptionNode[] optionNodes = new OptionNode[5];
 
-	//private var gameManager;
 	private Label3D powerLabel;
 	private Spatial optionNodeParent;
 
@@ -37,6 +46,7 @@ public class PowerNode : Node
 		IsOptionsTweening = false;
 		
 		powerLabel = GetParent().GetNode<Label3D>("PowerLabel");
+		powerLabel.Text = PowerLevel.ToString();
 		powerLabel.Visible = false;
 
 		optionNodeParent = GetParent().GetNode<Spatial>("OptionNodeParent");
@@ -102,8 +112,10 @@ public class PowerNode : Node
 					PackedScene scene = (PackedScene)ResourceLoader.Load("res://Scenes/OptionNode.tscn");
 					
 					Vector3[] locations = {
+						new Vector3(-3.0f, 1.5f, 0.0f),
 						new Vector3(-2.0f, 1.5f, 0.0f),
 						new Vector3( 0.0f, 3.0f, -1.0f),
+						new Vector3( 1.0f, 2.5f, -1.0f),
 						new Vector3( 2.0f, 1.5f, 0.0f)
 					};
 
@@ -127,12 +139,8 @@ public class PowerNode : Node
 			// Options are open
 			else if (IsOptionsOpen && !IsOptionsTweening)
 			{
-				GD.Print("[PowerNode] Hiding options");
-
 				HideOptionNodes();
-				gameManager.Call("clear_current_power_node");
 			}
-
 		}
 	}
 
@@ -156,5 +164,8 @@ public class PowerNode : Node
 		GD.Print("[PowerNode] Hiding options");
 		optionNodes.ToList().ForEach(i => i.HideOptionNode());
 		IsOptionsOpen = false;
+		
+		var gameManager = GetNode("/root/Level/GameManager");
+		gameManager.Call("clear_current_power_node");
 	}
 }

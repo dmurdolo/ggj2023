@@ -8,33 +8,43 @@ public class OptionNodeStaticBody : Spatial
 	{
 		if (@event is InputEventMouseButton eventMouseButton && eventMouseButton.Pressed && eventMouseButton.ButtonIndex == 1)
 		{
-			//GD.Print($"[OptionNodeStaticBody] ({GetParent().Name}) Left Click");
-			
 			// Set PowerNode type
 			PowerNode powerNode = GetParent().GetParent().GetParent().GetNode<PowerNode>("StaticBody");
 			if (!powerNode.IsOptionsTweening)
 			{
 				powerNode.IsOptionsOpen = false;
 				powerNode.Type = ((OptionNode)GetParent()).Type;
+				powerNode.GetParent().GetNode<Label3D>("PowerLabel").Visible = true;
+
+				var gameManager = GetNode("/root/Level/GameManager");
+				var hud = GetNode("/root/Level/HUD");
 
 				switch (powerNode.Type)
 				{
-					case PowerNodeType.Power:
-						powerNode.GetParent().GetNode<Label3D>("PowerLabel").Visible = true;
+					case PowerNodeType.PowerDown:
+						powerNode.PowerLevel--;
+						gameManager.Call("increase_current_power");
+						hud.Call("update_power");
 						break;
 
-					case PowerNodeType.Attack:
-						powerNode.GetParent().GetNode<Label3D>("PowerLabel").Visible = false;
+					case PowerNodeType.PowerUp:
+						powerNode.PowerLevel++;
+						gameManager.Call("decrease_current_power");
+						hud.Call("update_power");
 						break;
 
+					case PowerNodeType.Growth:
+						break;
+
+					case PowerNodeType.Defence:
+						break;
+					
 					case PowerNodeType.Decay:
-						powerNode.GetParent().GetNode<Label3D>("PowerLabel").Visible = false;
 						break;
 				}
 
 				// Close all Option Nodes
-				var optionNodes = GetParent().GetParent().GetChildren().OfType<OptionNode>();
-				optionNodes.ToList().ForEach(i => i.HideOptionNode());
+				powerNode.HideOptionNodes();
 			}
 		}
 	}
