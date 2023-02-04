@@ -1,25 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Ben X Tan\\Projects\\GGJ2023\\ggj2023\\TheGame\\TheGame.csproj": {}
+    "C:\\Dev\\Games\\ggj2023\\TheGame\\TheGame.csproj": {}
   },
   "projects": {
-    "C:\\Ben X Tan\\Projects\\GGJ2023\\ggj2023\\TheGame\\TheGame.csproj": {
+    "C:\\Dev\\Games\\ggj2023\\TheGame\\TheGame.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Ben X Tan\\Projects\\GGJ2023\\ggj2023\\TheGame\\TheGame.csproj",
+        "projectUniqueName": "C:\\Dev\\Games\\ggj2023\\TheGame\\TheGame.csproj",
         "projectName": "TheGame",
-        "projectPath": "C:\\Ben X Tan\\Projects\\GGJ2023\\ggj2023\\TheGame\\TheGame.csproj",
-        "packagesPath": "C:\\Users\\benxt\\.nuget\\packages\\",
-        "outputPath": "C:\\Ben X Tan\\Projects\\GGJ2023\\ggj2023\\TheGame\\.mono\\temp\\obj\\",
+        "projectPath": "C:\\Dev\\Games\\ggj2023\\TheGame\\TheGame.csproj",
+        "packagesPath": "C:\\Users\\dmurd\\.nuget\\packages\\",
+        "outputPath": "C:\\Dev\\Games\\ggj2023\\TheGame\\.mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\benxt\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\dmurd\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,7 +39,7 @@
       "frameworks": {
         "net472": {
           "targetAlias": "net472",
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
