@@ -15,9 +15,10 @@ public class PowerNode : Node
 		set {
 			type = value;
 			
-			CSGSphere sphere = GetNode<CSGSphere>("CollisionShape/CSGSphere");
-			sphere.Material = (Material)sphere.Material.Duplicate();
-			((SpatialMaterial)sphere.Material).AlbedoColor = PowerNodeUtils.GetPowerNodeTypeColor(type);
+			// TODO replace with a particle effect
+//			CSGSphere sphere = GetNode<CSGSphere>("CollisionShape/CSGSphere");
+//			sphere.Material = (Material)sphere.Material.Duplicate();
+//			((SpatialMaterial)sphere.Material).AlbedoColor = PowerNodeUtils.GetPowerNodeTypeColor(type);
 		}
 	}
 
@@ -85,7 +86,7 @@ public class PowerNode : Node
 	private void _on_StaticBody_input_event(object camera, object @event, Vector3 position, Vector3 normal, int shape_idx)
 	{
 		if (@event is InputEventMouseButton eventMouseButton && eventMouseButton.Pressed && eventMouseButton.ButtonIndex == 1)
-		{
+		{		
 			if (IsOptionsTweening) return;
 			
 			var gameManager = GetNode("/root/Level/GameManager");
