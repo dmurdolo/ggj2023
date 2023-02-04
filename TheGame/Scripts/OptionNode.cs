@@ -40,6 +40,39 @@ public class OptionNode : Spatial
 		tween.InterpolateProperty(this, "translation", Vector3.Zero, TweenFinalVal, TweenDuration, Tween.TransitionType.Sine, Tween.EaseType.Out);
 		tween.Connect("tween_completed", this, "ShowCompleted");
 		tween.Start();
+
+		var gameManager = GetNode("/root/Level/GameManager");
+		int currentPower = (int)gameManager.Call("get_current_power");
+		int maxPower = (int)gameManager.Call("get_max_power");
+
+		PowerNode powerNode = (PowerNode)GetParent().GetParent().GetNode("StaticBody");
+
+		bool isPowerNodeValid = false;
+		switch (type) {
+			case PowerNodeType.PowerDown:
+				isPowerNodeValid = powerNode.PowerLevel > 0;
+				break;
+			
+			case PowerNodeType.PowerUp:
+				isPowerNodeValid = currentPower > 0;
+				break;
+
+			case PowerNodeType.Growth:
+			case PowerNodeType.Defence:
+			case PowerNodeType.Decay:
+				isPowerNodeValid = powerNode.PowerLevel > 0;
+				break;
+		}
+
+		// Set enabled/disabled
+		CSGSphere sphere = GetNode<CSGSphere>("StaticBody/CollisionShape/CSGSphere");
+		if (isPowerNodeValid) {
+			GetNode("StaticBody").SetBlockSignals(false);
+			((SpatialMaterial)sphere.Material).AlbedoColor = PowerNodeUtils.GetPowerNodeTypeColor(type);
+		} else {
+			GetNode("StaticBody").SetBlockSignals(true);
+			((SpatialMaterial)sphere.Material).AlbedoColor = PowerNodeUtils.GetDisabledPowerNodeColor();
+		}
 	}
 
 	public void ShowCompleted(Godot.Object obj, NodePath key)

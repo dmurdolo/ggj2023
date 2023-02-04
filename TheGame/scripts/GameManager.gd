@@ -2,14 +2,23 @@ extends Node
 
 export (PackedScene) var mob_prefab
 
+var DEBUG_SPAWN = false
+
+var current_power:int = 10
+var max_power:int = 10
 var blue_tower = null
 var red_tower = null
 var blue_path = []
 var red_path = []
 var spawns_per_wave = 10
 
+#Power Nodes
+var test_nodes
+var current_power_node:Node = null
 
 func _ready():
+	init_nodes()
+	
 	var towers = get_tree().get_nodes_in_group("tower")
 	var tower_edge_map = {}
 	
@@ -25,8 +34,37 @@ func _ready():
 		blue_path = _generate_path(blue_tower, blue_tower, tower_edge_map, {}, true)
 	if red_tower:
 		red_path = _generate_path(red_tower, red_tower, tower_edge_map, {}, true)
-	do_spawn()
+	if (DEBUG_SPAWN):
+		do_spawn()
 
+func get_current_power() -> int:
+	return current_power
+
+func get_max_power() -> int:
+	return max_power
+
+func increase_current_power():
+	current_power += 1
+	
+func decrease_current_power():
+	current_power -= 1
+
+func init_nodes():
+	test_nodes = get_parent().get_node("TestNodes")
+	current_power_node = null
+
+func get_current_power_node() -> Node:
+	return current_power_node
+
+func set_current_power_node(power_node:Node):
+	#Its the StaticBody under PowerNode
+	current_power_node = power_node
+
+#For some reason, calling set_current_power_node with NULL from C# crashes the game
+#So this is temporary solution
+func clear_current_power_node():
+	current_power_node = null
+	
 func _map_edge(t1, t2_path, tower_edge_map):
 	if not t1 or not t2_path:
 		return
@@ -70,4 +108,5 @@ func do_spawn():
 
 
 func _on_Timer_timeout():
-	do_spawn()
+	if (DEBUG_SPAWN):
+		do_spawn()
