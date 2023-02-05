@@ -37,9 +37,6 @@ public class OptionNodeStaticBody : Spatial
 						hud.Call("update_energy");
 						if (powerNode.PowerLevel == 0) {
 							powerNode.RemoveSpecialisedNodes();
-
-							particle = GetParent().GetParent().GetParent().GetNode<Particles>("Particle");						
-							particle.Emitting = false;
 						}
 						break;
 

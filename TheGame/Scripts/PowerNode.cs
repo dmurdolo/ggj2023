@@ -34,6 +34,8 @@ public class PowerNode : Node
 
 	private bool isOptionsInitialised = false;
 	private OptionNode[] optionNodes = new OptionNode[5];
+	private float damageValue = 0;
+	private float damageRate = 0;
 
 	private Label3D powerLabel;
 	private Spatial optionNodeParent;
@@ -176,10 +178,24 @@ public class PowerNode : Node
 		{
 			node.QueueFree();
 		}
+
+		GetParent().GetNode<Particles>("Particle").Emitting = false;
 	}
 
 	private void UpdateOptionNodes()
 	{
 		optionNodes.ToList().ForEach(i => i.UpdateOptionNode());
+	}
+
+	public void Attack()
+	{
+		if (PowerLevel > 0)
+		{
+			PowerLevel--;
+			if (PowerLevel == 0)
+			{
+				RemoveSpecialisedNodes();
+			}
+		}
 	}
 }

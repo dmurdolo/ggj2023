@@ -56,6 +56,9 @@ func get_max_energy() -> int:
 func increase_max_energy():
 	max_energy += 1
 
+func decrease_max_energy():
+	max_energy -= 1
+
 func increase_current_energy():
 	current_energy += 1
 	
