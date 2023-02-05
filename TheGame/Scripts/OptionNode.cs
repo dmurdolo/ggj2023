@@ -61,9 +61,9 @@ public class OptionNode : Spatial
 				filename = "decay";
 				break;
 		}
-
-		AudioStreamMP3 stream = (AudioStreamMP3)GD.Load("res://Audio/" + filename + ".mp3");
+		
 		audioStreamPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+		AudioStreamMP3 stream = (AudioStreamMP3)GD.Load("res://Audio/" + filename + ".mp3");
 		audioStreamPlayer.Stream = stream;
 	}
 
@@ -128,9 +128,6 @@ public class OptionNode : Spatial
 		tween.InterpolateProperty(this, "translation", TweenFinalVal, Vector3.Zero, TweenDuration / 2.0f, Tween.TransitionType.Expo, Tween.EaseType.Out);
 		tween.Connect("tween_completed", this, "HideCompleted");
 		tween.Start();
-
-		// Play audio
-		audioStreamPlayer.Play();   // There is a BUG here, not sure why 2 sounds are playing.
 	}
 
 	public void HideCompleted(Godot.Object obj, NodePath key)

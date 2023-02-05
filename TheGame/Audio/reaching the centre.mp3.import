@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/reaching the centre.mp3-b3ee8e587e905f5267eed919d3f97353.mp3str"
+
+[deps]
+
+source_file="res://Audio/reaching the centre.mp3"
+dest_files=[ "res://.import/reaching the centre.mp3-b3ee8e587e905f5267eed919d3f97353.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

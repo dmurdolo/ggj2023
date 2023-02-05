@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/OptionNodeStaticBody.cs" type="Script" id=1]
 [ext_resource path="res://Scripts/OptionNode.cs" type="Script" id=2]
-[ext_resource path="res://Audio/sfx.mp3" type="AudioStream" id=3]
 
 [sub_resource type="SphereShape" id=1]
 
@@ -22,6 +21,5 @@ radius = 0.5
 material = SubResource( 2 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
 
 [connection signal="input_event" from="StaticBody" to="StaticBody" method="_on_StaticBody_input_event"]

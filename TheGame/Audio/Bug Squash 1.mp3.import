@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Bug Squash 1.mp3-3373293e74dc747c5aad85a4c9b2046f.mp3str"
+
+[deps]
+
+source_file="res://Audio/Bug Squash 1.mp3"
+dest_files=[ "res://.import/Bug Squash 1.mp3-3373293e74dc747c5aad85a4c9b2046f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
