@@ -44,6 +44,7 @@ stream = ExtResource( 3 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
 script = ExtResource( 1 )
+AddPowerOptionPosition = Vector3( -2, 1.5, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 14, 0, 0, 0, 3, 0, 0, 0, 14, 0, 0.305676, 0 )

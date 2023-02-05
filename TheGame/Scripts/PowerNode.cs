@@ -7,6 +7,7 @@ public class PowerNode : Node
 {
 	public bool IsOptionsOpen { get; set; }
 	public bool IsOptionsTweening { get; set; }
+	public bool IsCentralNode { get; set; }
 
 	private PowerNodeType type;
 	public PowerNodeType Type {

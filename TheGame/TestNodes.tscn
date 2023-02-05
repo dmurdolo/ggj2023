@@ -8,6 +8,7 @@ transform = Transform( 0.997351, 0, 0, 0, 0.997351, 0, 0, 0, 0.997351, 0, 0, 0 )
 [node name="Node2" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.999998, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, -39.5906, 3.81469e-06, -18.6034 )
 team_spawn = "red"
+next_towers = [ NodePath("../Node3") ]
 adjacent_to_core = true
 
 [node name="Node3" parent="." instance=ExtResource( 2 )]
@@ -24,6 +25,7 @@ adjacent_to_core = true
 [node name="Node5" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4667, 1.14441e-05, 12.9427 )
 team_spawn = "red"
+next_towers = [ NodePath("../Node4") ]
 adjacent_to_core = true
 
 [node name="Node6" parent="." instance=ExtResource( 2 )]
@@ -44,6 +46,7 @@ next_towers = [ NodePath("../Node9"), NodePath("../Node15") ]
 [node name="Node9" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3394, 1.14441e-05, 10.9377 )
 team_spawn = "red"
+next_towers = [ NodePath("../Node8") ]
 adjacent_to_core = true
 
 [node name="Node10" parent="." instance=ExtResource( 2 )]
@@ -54,6 +57,7 @@ next_towers = [ NodePath("../Node11") ]
 [node name="Node11" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5408, 1.14441e-05, -29.6138 )
 team_spawn = "red"
+next_towers = [ NodePath("../Node10") ]
 adjacent_to_core = true
 
 [node name="Node12" parent="." instance=ExtResource( 2 )]
