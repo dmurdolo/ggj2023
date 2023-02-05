@@ -13,8 +13,8 @@ ambient_light_color = Color( 0.537255, 0.537255, 0.537255, 1 )
 fog_enabled = true
 fog_color = Color( 0.568627, 0.564706, 0.533333, 1 )
 fog_sun_color = Color( 0.639216, 0.643137, 0.564706, 1 )
-fog_sun_amount = 0.25
-fog_depth_end = 200.0
+fog_sun_amount = 0.22
+fog_depth_end = 250.0
 fog_transmit_curve = 0.594604
 fog_height_enabled = true
 fog_height_min = 8.0
@@ -28,6 +28,7 @@ fog_height_max = -30.0
 environment = SubResource( 1 )
 
 [node name="GameManager" parent="." instance=ExtResource( 4 )]
+DEBUG_SPAWN = true
 
 [node name="TestNodes" parent="." instance=ExtResource( 5 )]
 
@@ -72,6 +73,3 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 89.4217, 0, -4.37389 )
 
 [node name="SpawnNorth" type="Spatial" parent="EnemySpawnNodes"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.971985, 0, -91.8516 )
-
-[node name="SpawnSouth" type="Spatial" parent="EnemySpawnNodes"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.971985, 0, 97.6835 )
