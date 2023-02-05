@@ -7,6 +7,7 @@
 extents = Vector3( 0.653345, 0.544173, 0.978918 )
 
 [sub_resource type="BoxShape" id=9]
+extents = Vector3( 0.200931, 0.225176, 0.219232 )
 
 [node name="Mob" type="KinematicBody" groups=["mob"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0114588, 0 )
