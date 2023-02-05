@@ -4,6 +4,14 @@ using System.Linq;
 
 public class OptionNodeStaticBody : Spatial
 {
+	private void StartEmitter(Particles particle) {
+		if (!particle.Emitting) {
+			particle.Emitting=true;
+		} else {
+			return;
+		}
+	}	
+	
 	private void _on_StaticBody_input_event(object camera, object @event, Vector3 position, Vector3 normal, int shape_idx)
 	{
 		if (@event is InputEventMouseButton eventMouseButton && eventMouseButton.Pressed && eventMouseButton.ButtonIndex == 1)
@@ -42,25 +50,21 @@ public class OptionNodeStaticBody : Spatial
 					case PowerNodeType.Growth:
 						particle = GetParent().GetParent().GetParent().GetNode<Particles>("Particle");	
 						particle.ProcessMaterial.Set("color", new Color(0,1,0,1));
-						if (!particle.Emitting) {
-							particle.Emitting=true;
-						}
+					
+						StartEmitter(particle);
 						break;
 
 					case PowerNodeType.Defence:						
 						particle = GetParent().GetParent().GetParent().GetNode<Particles>("Particle");	
 						particle.ProcessMaterial.Set("color", new Color(1,0,0,1));
-						if (!particle.Emitting) {	
-							particle.Emitting=true;
-						}
+						StartEmitter(particle);
 						break;
 					
 					case PowerNodeType.Decay:				
 						particle = GetParent().GetParent().GetParent().GetNode<Particles>("Particle");	
 						particle.ProcessMaterial.Set("color", new Color(0.5f,0.15f,0.5f,1));
-						if (!particle.Emitting) {	
-							particle.Emitting=true;
-						}
+			
+						StartEmitter(particle);
 						break;
 				}
 
