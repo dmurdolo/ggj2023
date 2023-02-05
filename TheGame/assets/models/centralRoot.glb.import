@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/CentralRoot.glb-da208ee6697e46a1a83d1bdc26281422.scn"
+path="res://.import/centralRoot.glb-ed56d269a5172b088bd371ba9be038b2.scn"
 
 [deps]
 
-source_file="res://assets/models/CentralRoot.glb"
-dest_files=[ "res://.import/CentralRoot.glb-da208ee6697e46a1a83d1bdc26281422.scn" ]
+source_file="res://assets/models/centralRoot.glb"
+dest_files=[ "res://.import/centralRoot.glb-ed56d269a5172b088bd371ba9be038b2.scn" ]
 
 [params]
 

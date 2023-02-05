@@ -61,7 +61,6 @@ directional_shadow_normal_bias = 0.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-autoplay = true
 
 [node name="EnemySpawnNodes" type="Spatial" parent="."]
 
