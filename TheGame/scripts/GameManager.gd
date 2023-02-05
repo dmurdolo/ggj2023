@@ -12,7 +12,7 @@ var red_tower = null
 var blue_path = []
 var red_path = []
 
-var spawns_per_wave:int = 10
+var spawns_per_wave:int = 5
 var wave:int = 0
 var final_wave:bool = false
 var survival_timer:float = 0
@@ -113,15 +113,14 @@ func do_spawn():
 	for team_data in teams:
 		var _team = team_data["team"]
 		var path = team_data["path"]
-		print(path)
 		var spawns = get_node("/root/Level/EnemySpawnNodes");
 		var spawnIndex = 0 #randi() % spawns.get_child_count()
 		var spawn = spawns.get_child(spawnIndex)
-
+		path["node"] = get_node("/root/Level/Nodes/Node6")
 		for _i in range(spawns_per_wave):
 			var mob = mob_prefab.instance()
 			add_child(mob)
-			mob.initialize(spawn, get_node("/root/Level/Nodes/Node4"), team_data["team"], team_data["enemy_team"])
+			mob.initialize(spawn, path, team_data["team"], team_data["enemy_team"])
 
 
 func _on_Timer_timeout():

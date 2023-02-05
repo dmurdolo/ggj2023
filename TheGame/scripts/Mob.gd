@@ -54,7 +54,7 @@ func _physics_process(_delta):
 func initialize(spawn, path, side, target_side):
 	self.spawn = spawn
 	self.path = path
-	current_target_tower = path
+	current_target_tower = path["node"]
 	current_subpath = path
 	var initial_position = spawn.transform.origin
 	initial_position.x += rand_range(-10.0, 10.0)
@@ -109,7 +109,7 @@ func _target_next_tower():
 	var next_nodes = current_subpath["next_nodes"]
 	if not next_nodes:
 		return
-	var next_index = 1 #random.randi_range(0, len(next_nodes) - 1)
+	var next_index = random.randi_range(0, len(next_nodes) - 1)
 	current_subpath = next_nodes[next_index]
 	current_target_tower = current_subpath["node"]
 	_sweep_null_current_targets()
@@ -118,11 +118,12 @@ func _target_next_tower():
 func _on_LargeArea_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
 	if current_target_tower.is_a_parent_of(body):
 		
-		var node = current_target_tower.get_node("PowerNode/StaticBody")
-		print(node)
-		print("Power: " + str(node.PowerLevel))
+		var powerNode = current_target_tower.get_node("PowerNode/StaticBody")
+		print(current_target_tower.name + ": Power: " + str(powerNode.PowerLevel))
 		
-		#_target_next_tower()
+		# Move to the next tower if the power level is zero
+		if (powerNode.PowerLevel == 0):
+			_target_next_tower()
 	if body.is_in_group(target_side):
 		current_targets.append(weakref(body))
 		_update_current_target()
