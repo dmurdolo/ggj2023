@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mushroom death 1.mp3-a1e391b4c7bd1a9037aa090c0a57bcb3.mp3str"
+
+[deps]
+
+source_file="res://Audio/mushroom death 1.mp3"
+dest_files=[ "res://.import/mushroom death 1.mp3-a1e391b4c7bd1a9037aa090c0a57bcb3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

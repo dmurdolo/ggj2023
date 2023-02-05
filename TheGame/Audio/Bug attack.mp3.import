@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Bug attack.mp3-87d20f1e935858030a49b9a0a3e70e01.mp3str"
+
+[deps]
+
+source_file="res://Audio/Bug attack.mp3"
+dest_files=[ "res://.import/Bug attack.mp3-87d20f1e935858030a49b9a0a3e70e01.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
