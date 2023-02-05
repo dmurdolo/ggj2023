@@ -28,9 +28,10 @@ func _ready():
 	var tower_edge_map = {}
 	
 	for tower in towers:
-		_map_edge(tower, tower.next_tower_1, tower_edge_map)
-		_map_edge(tower, tower.next_tower_2, tower_edge_map)
-		_map_edge(tower, tower.next_tower_3, tower_edge_map)
+		for t in tower.next_towers:
+			_map_edge(tower, t, tower_edge_map)
+#		_map_edge(tower, tower.next_tower_2, tower_edge_map)
+#		_map_edge(tower, tower.next_tower_3, tower_edge_map)
 		# if tower.team_spawn == "blue":
 		# 	blue_tower = tower
 		if tower.team_spawn == "red":
@@ -55,7 +56,7 @@ func decrease_current_energy():
 	current_energy -= 1
 
 func init_nodes():
-	test_nodes = get_parent().get_node("TestNodes")
+	test_nodes = get_parent().get_node("Nodes")
 	current_power_node = null
 
 func get_current_power_node() -> Node:
