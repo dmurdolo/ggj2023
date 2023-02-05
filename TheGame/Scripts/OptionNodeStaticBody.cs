@@ -38,19 +38,34 @@ public class OptionNodeStaticBody : Spatial
 						if (powerNode.PowerLevel == 0) {
 							particle = GetParent().GetParent().GetParent().GetNode<Particles>("Particle");						
 							particle.Emitting=false;
+							
+							// Remove any existing nodes
+							Node node = powerNode.GetNode("GrowthNode");
+							if (node != null)
+							{
+								node.QueueFree();
+							}
 						}
 						break;
 
 					case PowerNodeType.PowerUp:
-						powerNode.PowerLevel++;
-						gameManager.Call("decrease_current_energy");
-						hud.Call("update_energy");
+						if (powerNode.PowerLevel < PowerNodeUtils.NODE_MAX_POWER_LEVEL) {
+							powerNode.PowerLevel++;
+							gameManager.Call("decrease_current_energy");
+							hud.Call("update_energy");
+						}
 						break;
 
 					case PowerNodeType.Growth:
 						particle = GetParent().GetParent().GetParent().GetNode<Particles>("Particle");	
 						particle.ProcessMaterial.Set("color", new Color(0,1,0,1));
 						StartEmitter(particle);
+
+						// Add a GrowthNode
+						PackedScene scene = (PackedScene)ResourceLoader.Load("res://Scenes/GrowthNode.tscn");
+						GrowthNode growthNode = (GrowthNode)scene.Instance();
+						powerNode.AddChild(growthNode);
+
 						break;
 
 					case PowerNodeType.Defence:						

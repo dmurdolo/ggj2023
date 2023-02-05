@@ -6,6 +6,7 @@ export var DEBUG_SPAWN = false
 
 var current_energy:int = 10
 var max_energy:int = 10
+var max_energy_cap:int = 100
 var blue_tower = null
 var red_tower = null
 var blue_path = []
@@ -42,11 +43,17 @@ func _ready():
 	if (DEBUG_SPAWN):
 		do_spawn()
 
+func get_max_energy_capy() -> int:
+	return max_energy_cap
+
 func get_current_energy() -> int:
 	return current_energy
 
 func get_max_energy() -> int:
 	return max_energy
+
+func increase_max_energy():
+	max_energy += 1
 
 func increase_current_energy():
 	current_energy += 1

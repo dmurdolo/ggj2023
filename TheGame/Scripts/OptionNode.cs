@@ -90,7 +90,7 @@ public class OptionNode : Spatial
 				break;
 			
 			case PowerNodeType.PowerUp:
-				isPowerNodeValid = currentEnergy > 0;
+				isPowerNodeValid = currentEnergy > 0 && powerNode.PowerLevel < PowerNodeUtils.NODE_MAX_POWER_LEVEL;
 				break;
 
 			case PowerNodeType.Growth:

@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Linq;
 
+// This is attaced to the StaticBody inside PowerNode
 public class PowerNode : Node
 {
 	public bool IsOptionsOpen { get; set; }
