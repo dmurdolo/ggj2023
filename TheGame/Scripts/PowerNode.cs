@@ -14,11 +14,6 @@ public class PowerNode : Node
 		}
 		set {
 			type = value;
-			
-			// TODO replace with a particle effect
-//			CSGSphere sphere = GetNode<CSGSphere>("CollisionShape/CSGSphere");
-//			sphere.Material = (Material)sphere.Material.Duplicate();
-//			((SpatialMaterial)sphere.Material).AlbedoColor = PowerNodeUtils.GetPowerNodeTypeColor(type);
 		}
 	}
 
