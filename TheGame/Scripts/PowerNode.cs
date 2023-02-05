@@ -141,6 +141,7 @@ public class PowerNode : Node
 			else if (IsOptionsOpen && !IsOptionsTweening)
 			{
 				HideOptionNodes();
+				GetParent().GetNode<AudioStreamPlayer>("NodeClosingAudio").Play();
 			}
 		}
 	}

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/node_opening.mp3-554e6d2f7ceadde956511180d4c74f67.mp
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

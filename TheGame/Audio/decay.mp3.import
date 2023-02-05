@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/decay.mp3-bcef018c9a5b25e2b6f4bd927fc53dec.mp3str"
+
+[deps]
+
+source_file="res://Audio/decay.mp3"
+dest_files=[ "res://.import/decay.mp3-bcef018c9a5b25e2b6f4bd927fc53dec.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

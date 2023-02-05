@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/growth.mp3-508ade0e590e9f662dba207ac63bd1bb.mp3str"
+
+[deps]
+
+source_file="res://Audio/growth.mp3"
+dest_files=[ "res://.import/growth.mp3-508ade0e590e9f662dba207ac63bd1bb.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
