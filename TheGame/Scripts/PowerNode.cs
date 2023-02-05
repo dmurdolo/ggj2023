@@ -111,7 +111,7 @@ public class PowerNode : Node
 						new Vector3(-3.0f, 1.5f, 0.0f),
 						new Vector3(-2.0f, 1.5f, 0.0f),
 						new Vector3( 0.0f, 3.0f, -1.0f),
-						new Vector3( 1.0f, 2.5f, -1.0f),
+						new Vector3( 1.1f, 2.5f, -1.0f),
 						new Vector3( 2.0f, 1.5f, 0.0f)
 					};
 
