@@ -26,7 +26,6 @@ shape = SubResource( 2 )
 
 [node name="boulders" type="Spatial" parent="."]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
-visible = false
 
 [node name="boulder_flat_01" parent="boulders" instance=ExtResource( 3 )]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 38.4331, -0.134532, -3.08729 )
