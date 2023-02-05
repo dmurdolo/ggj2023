@@ -1,10 +1,36 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/PowerNode.cs" type="Script" id=1]
-[ext_resource path="res://assets/prefabs/DirtNode.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Audio/node_opening.mp3" type="AudioStream" id=2]
+[ext_resource path="res://assets/prefabs/DirtNode.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/textures/spotlight_5.png" type="Texture" id=4]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.359982, 0.500688, 0.314282 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 5
+emission_ring_radius = 3.0
+emission_ring_inner_radius = 0.0
+emission_ring_height = 5.0
+emission_ring_axis = Vector3( 0, 0, 1 )
+gravity = Vector3( 0, 4.9, 0 )
+angle = 360.0
+angle_random = 1.0
+color = Color( 0.478431, 0.14902, 0.498039, 1 )
+
+[sub_resource type="QuadMesh" id=4]
 
 [node name="PowerNode" type="Spatial"]
 
@@ -15,7 +41,7 @@ script = ExtResource( 1 )
 transform = Transform( 14, 0, 0, 0, 3, 0, 0, 0, 14, 0, 0.305676, 0 )
 shape = SubResource( 1 )
 
-[node name="DirtNode" parent="StaticBody" instance=ExtResource( 2 )]
+[node name="DirtNode" parent="StaticBody" instance=ExtResource( 3 )]
 transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 2.98023e-08, 0 )
 
 [node name="PowerLabel" type="Label3D" parent="."]
@@ -25,5 +51,16 @@ text = "1"
 
 [node name="OptionNodeParent" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51376, 0 )
+
+[node name="NodeOpeningAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="Particle" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55033, 0 )
+material_override = SubResource( 2 )
+emitting = false
+amount = 90
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 4 )
 
 [connection signal="input_event" from="StaticBody" to="StaticBody" method="_on_StaticBody_input_event"]

@@ -10,6 +10,8 @@ public class OptionNodeStaticBody : Spatial
 		{
 			// Set PowerNode type
 			PowerNode powerNode = GetParent().GetParent().GetParent().GetNode<PowerNode>("StaticBody");
+			Particles particle;
+			
 			if (!powerNode.IsOptionsTweening)
 			{
 				powerNode.IsOptionsOpen = false;
@@ -23,23 +25,42 @@ public class OptionNodeStaticBody : Spatial
 				{
 					case PowerNodeType.PowerDown:
 						powerNode.PowerLevel--;
-						gameManager.Call("increase_current_power");
-						hud.Call("update_power");
+						gameManager.Call("increase_current_energy");
+						hud.Call("update_energy");
+						if (powerNode.PowerLevel == 0) {
+							particle = GetParent().GetParent().GetParent().GetNode<Particles>("Particle");						
+							particle.Emitting=false;
+						}
 						break;
 
 					case PowerNodeType.PowerUp:
 						powerNode.PowerLevel++;
-						gameManager.Call("decrease_current_power");
-						hud.Call("update_power");
+						gameManager.Call("decrease_current_energy");
+						hud.Call("update_energy");
 						break;
 
 					case PowerNodeType.Growth:
+						particle = GetParent().GetParent().GetParent().GetNode<Particles>("Particle");	
+						particle.ProcessMaterial.Set("color", new Color(0,1,0,1));
+						if (!particle.Emitting) {
+							particle.Emitting=true;
+						}
 						break;
 
-					case PowerNodeType.Defence:
+					case PowerNodeType.Defence:						
+						particle = GetParent().GetParent().GetParent().GetNode<Particles>("Particle");	
+						particle.ProcessMaterial.Set("color", new Color(1,0,0,1));
+						if (!particle.Emitting) {	
+							particle.Emitting=true;
+						}
 						break;
 					
-					case PowerNodeType.Decay:
+					case PowerNodeType.Decay:				
+						particle = GetParent().GetParent().GetParent().GetNode<Particles>("Particle");	
+						particle.ProcessMaterial.Set("color", new Color(0.5f,0.15f,0.5f,1));
+						if (!particle.Emitting) {	
+							particle.Emitting=true;
+						}
 						break;
 				}
 
