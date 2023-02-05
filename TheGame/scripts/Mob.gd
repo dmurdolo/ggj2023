@@ -112,18 +112,18 @@ func _target_next_tower():
 	var next_index = random.randi_range(0, len(next_nodes) - 1)
 	current_subpath = next_nodes[next_index]
 	current_target_tower = current_subpath["node"]
-	sweep_null_current_targets()
+	_sweep_null_current_targets()
 	_update_current_target()
 
-func _on_LargeArea_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+func _on_LargeArea_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
 	if current_target_tower.is_a_parent_of(body):
 		_target_next_tower()
 	if body.is_in_group(target_side):
 		current_targets.append(weakref(body))
-		update_current_target()
+		_update_current_target()
 	_sweep_null_current_targets()
 
-func _on_LargeArea_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
+func _on_LargeArea_body_shape_exited(_body_rid, body, _body_shape_index, _local_shape_index):
 	var find_index = current_targets.find(body)
 	if find_index < 0:
 		return
