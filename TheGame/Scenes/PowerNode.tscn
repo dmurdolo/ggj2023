@@ -21,6 +21,7 @@ particles_anim_loop = false
 albedo_texture = ExtResource( 4 )
 
 [sub_resource type="ParticlesMaterial" id=3]
+resource_local_to_scene = true
 emission_shape = 5
 emission_ring_radius = 3.0
 emission_ring_inner_radius = 0.0
@@ -37,6 +38,7 @@ color = Color( 0.478431, 0.14902, 0.498039, 1 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
 script = ExtResource( 1 )
+AddPowerOptionPosition = Vector3( -2, 1.5, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 14, 0, 0, 0, 3, 0, 0, 0, 14, 0, 0.305676, 0 )
