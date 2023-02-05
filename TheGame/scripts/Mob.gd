@@ -13,6 +13,7 @@ var velocity = Vector3.ZERO
 var direction = Vector3.ZERO
 var current_target
 var current_targets = []
+var spawn
 var path
 var current_subpath
 var current_target_tower
@@ -27,10 +28,10 @@ func _ready():
 	random.randomize()
 
 func _physics_process(_delta):
-	var target_is_enemy = true
+#	var target_is_enemy = true
 	var target = current_target.get_ref()
 	if not target:
-		target_is_enemy = false
+#		target_is_enemy = false
 		target =  current_target_tower
 	if not target:
 		return
@@ -38,22 +39,24 @@ func _physics_process(_delta):
 	look_at(target.transform.origin, Vector3.UP)
 
 	if delta_to_target.length() < attack_distance:
-		if target_is_enemy:
-			$AnimationPlayer.assigned_animation = "attack"
-		else:
-			$AnimationPlayer.assigned_animation = "move"
+		pass
+#		if target_is_enemy:
+#			$AnimationPlayer.assigned_animation = "attack"
+#		else:
+#			$AnimationPlayer.assigned_animation = "move"
 	else:
-		$AnimationPlayer.assigned_animation = "move"
+#		$AnimationPlayer.assigned_animation = "move"
 		velocity = Vector3.FORWARD * random_speed
 		velocity = velocity.rotated(Vector3.UP, rotation.y)
 		move_and_slide(velocity)
 
 
-func initialize(path, side, target_side):
+func initialize(spawn, path, side, target_side):
+	self.spawn = spawn
 	self.path = path
 	current_target_tower = path["node"]
 	current_subpath = path
-	var initial_position = current_target_tower.transform.origin
+	var initial_position = spawn.transform.origin
 	initial_position.x += rand_range(-10.0, 10.0)
 	initial_position.z += rand_range(-10.0, 10.0)
 	translation = initial_position
@@ -64,12 +67,12 @@ func initialize(path, side, target_side):
 	add_to_group(side)
 
 	random_speed = rand_range(min_speed, max_speed)
-	$AnimationPlayer.playback_speed = random_speed / min_speed
-	$AnimationPlayer.assigned_animation = "move"
+#	$AnimationPlayer.playback_speed = random_speed / min_speed
+#	$AnimationPlayer.assigned_animation = "move"
 	$CollisionShape.disabled = false
 
 func _update_current_target():
-	var old_target = current_target
+#	var old_target = current_target
 	var origin = transform.origin
 	var best_target = null
 	var best_distance = 100000000.0
@@ -82,8 +85,8 @@ func _update_current_target():
 			best_distance = distance
 			best_target = target
 	current_target = weakref(best_target)
-	if not current_target:
-		$AnimationPlayer.assigned_animation = "move"
+#	if not current_target:
+#		$AnimationPlayer.assigned_animation = "move"
 
 func _sweep_null_current_targets():
 	for i in range(len(current_targets) - 1, -1, -1):

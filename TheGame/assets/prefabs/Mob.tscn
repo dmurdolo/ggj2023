@@ -1,207 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/Mob.gd" type="Script" id=1]
-[ext_resource path="res://assets/models/mob.glb" type="PackedScene" id=2]
 [ext_resource path="res://assets/models/Beetle_placeholder.glb" type="PackedScene" id=3]
 
 [sub_resource type="BoxShape" id=3]
-extents = Vector3( 0.679112, 0.544173, 1.10029 )
-
-[sub_resource type="Animation" id=4]
-resource_name = "New Anim"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Pivot/Character:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.6, 1 ),
-"transitions": PoolRealArray( 2.46229, 2.46229, 2.46229 ),
-"update": 0,
-"values": [ Vector3( 0, 0.348069, 0 ), Vector3( 0, 0.648, 0 ), Vector3( 0, 0.348069, 0 ) ]
-}
-
-[sub_resource type="Animation" id=6]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Pivot/Character:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Pivot/Character:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "attack"
-length = 1.2
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Pivot/Character:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( -0.1, 0, 0.2, 0.5, 0.6, 0.8, 1 ),
-"transitions": PoolRealArray( 0.435275, 1, 1, 3.24901, 1, 3.03143, 1.51572 ),
-"update": 0,
-"values": [ Vector3( 0, 0.329753, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 2.52718, 0 ), Vector3( 0, 2.77965, 0 ), Vector3( 0, 2.21495, -0.656026 ), Vector3( 0, 2.04977, -0.637286 ), Vector3( 0, 0.903091, -0.24144 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Pivot/Character:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.5, 0.6, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 7.99999, 8.57419 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 23.315, 0, 0 ), Vector3( -21.889, 0, 0 ), Vector3( -25.112, 0, 0 ), Vector3( -18.874, 0, 0 ), Vector3( -21.053, 0, 0 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.6 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "_on_Attack_hit"
-} ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Pivot/Beetle_placeholder:translation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 0.5, 0.6, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 3.24901, 1, 3.03143, 1.51572 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 2.52718, 0 ), Vector3( 0, 2.389, 0 ), Vector3( 0, 2.21495, -0.656026 ), Vector3( 0, 2.04977, -0.637286 ), Vector3( 0, 0, -0.241 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Pivot/Beetle_placeholder:rotation_degrees")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2, 0.5, 0.6, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 7.99999, 8.57419 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 23.315, 0, 0 ), Vector3( -21.889, 0, 0 ), Vector3( -25.112, 0, 0 ), Vector3( -18.874, 0, 0 ), Vector3( -21.053, 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=2]
-length = 1.2
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Pivot/Character:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.22, 0.8, 1.18 ),
-"transitions": PoolRealArray( 0.435275, 2.21914, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0.329753, 0 ), Vector3( 0, 3.142, 0 ), Vector3( 0, 0.349734, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Pivot/Character:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.1, 0.46, 1.18 ),
-"transitions": PoolRealArray( 0.482968, 0.535887, 1 ),
-"update": 0,
-"values": [ Vector3( -5.0326, 0, 0 ), Vector3( 10, 0, 0 ), Vector3( -10, 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=8]
-resource_name = "move"
-length = 0.5
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Pivot/Character:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.1, 0.3, 0.5 ),
-"transitions": PoolRealArray( 0.435275, 2.21914, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0.528, 0 ), Vector3( 0, 2.274, 0 ), Vector3( 0, 0.349734, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Pivot/Character:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 0.482968, 0.535887, 1.51572, 1, 1 ),
-"update": 0,
-"values": [ Vector3( -5.0326, 0, 0 ), Vector3( 15.262, 0, 0 ), Vector3( -11.6477, 0, 0 ), Vector3( -27.3965, 0, 0 ), Vector3( -10, 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=7]
-resource_name = "waffle"
-length = 1.9
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Pivot/Character:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.6, 0.8, 0.9, 1.1, 1.3, 1.5, 1.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 0.189465, 1.51572, 1, 1, 2.46229, 1.6245, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( -0.623661, 0.881711, 0 ), Vector3( -1.24732, 1.0326, 0 ), Vector3( -2.49464, 0.377467, 0 ), Vector3( -2.02279, 0.249153, 0 ), Vector3( -0.961134, 1.08632, 0 ), Vector3( 0.426813, 1.41271, 0 ), Vector3( 1.5954, 0.230674, 0 ), Vector3( 1.72197, 0.188733, 0 ), Vector3( 1.20272, 0.79596, 0 ), Vector3( 0.120943, 0.157055, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Pivot/Character:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.6, 0.7, 0.8, 0.9, 1.1, 1.3, 1.5, 1.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1.23114, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -27.5957 ), Vector3( 0, 0, -11.6555 ), Vector3( 0, 0, 5.743 ), Vector3( 0, 0, 4.49669 ), Vector3( 0, 0, 17.5717 ), Vector3( 0, 0, 25.4787 ), Vector3( 0, 0, 16.7097 ), Vector3( 0, 0, -14.3264 ), Vector3( 0, 0, -15.5546 ), Vector3( 0, 0, -16.7437 ), Vector3( 0, 0, 7.38327 ) ]
-}
+extents = Vector3( 0.653345, 0.544173, 0.978918 )
 
 [sub_resource type="BoxShape" id=9]
 
@@ -215,26 +18,13 @@ max_speed = 10
 
 [node name="Pivot" type="Spatial" parent="."]
 
-[node name="Character" parent="Pivot" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0 )
-visible = false
-
 [node name="Beetle_placeholder" parent="Pivot" instance=ExtResource( 3 )]
-transform = Transform( 0.3, 0, 0, 0, 0.278169, 0.112348, 0, -0.112348, 0.278169, 0, 2.13236, -0.646656 )
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.087675, 0.0931806 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1.08853, 0, 0, 0, 1, 0, 0, 0, 1.36492, -0.0248889, 0.52793, -0.3133 )
 shape = SubResource( 3 )
 disabled = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "New Anim"
-"anims/New Anim" = SubResource( 4 )
-anims/RESET = SubResource( 6 )
-anims/attack = SubResource( 5 )
-anims/float = SubResource( 2 )
-anims/move = SubResource( 8 )
-anims/waffle = SubResource( 7 )
 
 [node name="LargeArea" type="Area" parent="."]
 transform = Transform( 1.11889, 0, 0, 0, 1.17054, 0, 0, 0, 1.40761, 0, 0.579689, 0 )
