@@ -27,6 +27,8 @@ public class PowerNode : Node
 			powerLevel = value;
 
 			powerLabel.Text = PowerLevel.ToString();
+
+			UpdateOptionNodes();
 		}
 	}
 
@@ -165,5 +167,19 @@ public class PowerNode : Node
 		
 		var gameManager = GetNode("/root/Level/GameManager");
 		gameManager.Call("clear_current_power_node");
+	}
+
+	public void RemoveSpecialisedNodes()
+	{
+		Node node = GetNode("GrowthNode");
+		if (node != null)
+		{
+			node.QueueFree();
+		}
+	}
+
+	private void UpdateOptionNodes()
+	{
+		optionNodes.ToList().ForEach(i => i.UpdateOptionNode());
 	}
 }
