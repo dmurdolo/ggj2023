@@ -13,9 +13,9 @@ var red_path = []
 
 var spawns_per_wave:int = 5
 var wave:int = 0
-var final_wave:boolean = false
+var final_wave:bool = false
 var survival_timer:float = 0
-var end_game:boolean = false
+var end_game:bool = false
 
 #Power Nodes
 var test_nodes
