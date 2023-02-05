@@ -21,6 +21,7 @@ particles_anim_loop = false
 albedo_texture = ExtResource( 4 )
 
 [sub_resource type="ParticlesMaterial" id=3]
+resource_local_to_scene = true
 emission_shape = 5
 emission_ring_radius = 3.0
 emission_ring_inner_radius = 0.0
