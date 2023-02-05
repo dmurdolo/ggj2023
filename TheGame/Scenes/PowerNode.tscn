@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/prefabs/DirtNode.tscn" type="PackedScene" id=5]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.359982, 0.500688, 0.314282 )
+extents = Vector3( 0.217389, 0.500688, 0.208187 )
 
 [sub_resource type="SpatialMaterial" id=2]
 flags_transparent = true
@@ -36,6 +36,12 @@ color = Color( 0.478431, 0.14902, 0.498039, 1 )
 
 [node name="PowerNode" type="Spatial"]
 
+[node name="NodeOpeningAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="NodeClosingAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
 [node name="StaticBody" type="StaticBody" parent="."]
 script = ExtResource( 1 )
 AddPowerOptionPosition = Vector3( -2, 1.5, 0 )
@@ -54,12 +60,6 @@ text = "1"
 
 [node name="OptionNodeParent" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51376, 0 )
-
-[node name="NodeOpeningAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
-
-[node name="NodeClosingAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
 
 [node name="Particle" type="Particles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55033, 0 )

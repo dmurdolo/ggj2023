@@ -37,10 +37,8 @@ public class OptionNodeStaticBody : Spatial
 						powerNode.PowerLevel--;
 						gameManager.Call("increase_current_energy");
 						hud.Call("update_energy");
-
-						if (powerNode.PowerLevel == 0 && particle != null) {
-							particle = GetParent().GetParent().GetParent().GetNode<Particles>("Particle");						
-							particle.Emitting=false;
+						if (powerNode.PowerLevel == 0) {
+							powerNode.RemoveSpecialisedNodes();
 						}
 						break;
 
@@ -59,21 +57,45 @@ public class OptionNodeStaticBody : Spatial
 								centralRootManager.Call("update_surrounding_node_has_power", false);
 							}
 						}
+
+						if (powerNode.PowerLevel < PowerNodeUtils.NODE_MAX_POWER_LEVEL) {
+							powerNode.PowerLevel++;
+							gameManager.Call("decrease_current_energy");
+							hud.Call("update_energy");
+						}
 						break;
 
 					case PowerNodeType.Growth:
+						powerNode.HideOptionNodes();
+						powerNode.RemoveSpecialisedNodes();
+
+						// Add a GrowthNode
+						PackedScene scene = (PackedScene)ResourceLoader.Load("res://Scenes/GrowthNode.tscn");
+						GrowthNode growthNode = (GrowthNode)scene.Instance();
+						powerNode.AddChild(growthNode);
+
+						// Start particles
 						particle = GetParent().GetParent().GetParent().GetNode<Particles>("Particle");	
 						particle.ProcessMaterial.Set("color", new Color(0,1,0,1));
 						StartEmitter(particle);
+
 						break;
 
-					case PowerNodeType.Defence:						
+					case PowerNodeType.Defence:
+						powerNode.HideOptionNodes();
+						powerNode.RemoveSpecialisedNodes();
+
+						// Start particles
 						particle = GetParent().GetParent().GetParent().GetNode<Particles>("Particle");	
 						particle.ProcessMaterial.Set("color", new Color(1,0,0,1));
 						StartEmitter(particle);
 						break;
 					
-					case PowerNodeType.Decay:				
+					case PowerNodeType.Decay:
+						powerNode.HideOptionNodes();
+						powerNode.RemoveSpecialisedNodes();
+
+						// Start particles
 						particle = GetParent().GetParent().GetParent().GetNode<Particles>("Particle");	
 						particle.ProcessMaterial.Set("color", new Color(0.5f,0.15f,0.5f,1));
 						StartEmitter(particle);
@@ -83,9 +105,6 @@ public class OptionNodeStaticBody : Spatial
 				// Play audio
 				AudioStreamPlayer audioStreamPlayer = GetParent().GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 				audioStreamPlayer.Play();
-
-				// Close all Option Nodes
-				powerNode.HideOptionNodes();
 			}
 		}
 	}

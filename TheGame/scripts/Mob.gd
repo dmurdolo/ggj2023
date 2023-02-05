@@ -22,10 +22,13 @@ var this_side
 var target_side
 var hp = 5
 var random = RandomNumberGenerator.new()
-
+var is_at_target = false
 
 func _ready():
 	random.randomize()
+
+func _process(delta):
+	pass
 
 func _physics_process(_delta):
 #	var target_is_enemy = true
@@ -108,6 +111,11 @@ func _target_next_tower():
 		return
 	var next_nodes = current_subpath["next_nodes"]
 	if not next_nodes:
+		# Pick a random tower next
+		var towers = get_tree().get_nodes_in_group("tower")
+		current_target_tower = towers[random.randi_range(0, len(towers) - 1)]
+		_sweep_null_current_targets()
+		_update_current_target()
 		return
 	var next_index = random.randi_range(0, len(next_nodes) - 1)
 	current_subpath = next_nodes[next_index]
@@ -117,12 +125,29 @@ func _target_next_tower():
 
 func _on_LargeArea_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
 	if current_target_tower.is_a_parent_of(body):
-		_target_next_tower()
+		is_at_target = true;
+		var powerNode = current_target_tower.get_node("PowerNode/StaticBody")
+		if (powerNode.PowerLevel == 0):
+			# Move to the next tower if the power level is zero
+			_target_next_tower()
+		else:
+			yield(get_tree().create_timer(1.0), "timeout")
+			_attack_timeout()
 	if body.is_in_group(target_side):
 		current_targets.append(weakref(body))
 		_update_current_target()
 	_sweep_null_current_targets()
 
+func _attack_timeout():
+	var powerNode = current_target_tower.get_node("PowerNode/StaticBody")
+	if (powerNode.PowerLevel > 0):
+		print("ATTACK: " + current_target_tower.name + ": Power: " + str(powerNode.PowerLevel))
+		powerNode.Attack()
+		yield(get_tree().create_timer(1.0), "timeout")
+		_attack_timeout()
+	else:
+		_target_next_tower()
+		
 func _on_LargeArea_body_shape_exited(_body_rid, body, _body_shape_index, _local_shape_index):
 	var find_index = current_targets.find(body)
 	if find_index < 0:

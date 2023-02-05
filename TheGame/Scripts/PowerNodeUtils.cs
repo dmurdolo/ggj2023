@@ -12,6 +12,8 @@ public enum PowerNodeType
 
 public class PowerNodeUtils
 {
+	public static int NODE_MAX_POWER_LEVEL = 4;
+
 	public static Color GetPowerNodeTypeColor(PowerNodeType type)
 	{
 		Color color = new Color(0,0,0,1);

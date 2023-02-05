@@ -12,4 +12,4 @@ func _ready():
 #	pass
 
 func update_energy():
-	$PowerLabel.set_text(String(game_manager.current_energy))
+	$PowerLabel.set_text("%d/%d" % [game_manager.current_energy, game_manager.max_energy]);

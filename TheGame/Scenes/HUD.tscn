@@ -24,7 +24,7 @@ text = "Power:"
 [node name="PowerLabel" type="Label" parent="."]
 margin_left = 150.0
 margin_top = 20.0
-margin_right = 270.0
+margin_right = 300.0
 margin_bottom = 65.0
 custom_fonts/font = SubResource( 1 )
 text = "10"

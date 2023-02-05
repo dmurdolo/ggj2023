@@ -77,6 +77,15 @@ public class OptionNode : Spatial
 		tween.Connect("tween_completed", this, "ShowCompleted");
 		tween.Start();
 
+		UpdateOptionNode();
+
+		// Play audio
+		PowerNode powerNode = (PowerNode)GetParent().GetParent().GetNode("StaticBody");
+		powerNode.GetParent().GetNode<AudioStreamPlayer>("NodeOpeningAudio").Play();
+	}
+
+	public void UpdateOptionNode()
+	{
 		var gameManager = GetNode("/root/Level/GameManager");
 		int currentEnergy = (int)gameManager.Call("get_current_energy");
 		int maxEnergy = (int)gameManager.Call("get_max_energy");
@@ -90,7 +99,7 @@ public class OptionNode : Spatial
 				break;
 			
 			case PowerNodeType.PowerUp:
-				isPowerNodeValid = currentEnergy > 0;
+				isPowerNodeValid = currentEnergy > 0 && powerNode.PowerLevel < PowerNodeUtils.NODE_MAX_POWER_LEVEL;
 				break;
 
 			case PowerNodeType.Growth:
@@ -109,9 +118,6 @@ public class OptionNode : Spatial
 			GetNode("StaticBody").SetBlockSignals(true);
 			((SpatialMaterial)sphere.Material).AlbedoColor = PowerNodeUtils.GetDisabledPowerNodeColor();
 		}
-
-		// Play audio
-		powerNode.GetParent().GetNode<AudioStreamPlayer>("NodeOpeningAudio").Play();
 	}
 
 	public void ShowCompleted(Godot.Object obj, NodePath key)

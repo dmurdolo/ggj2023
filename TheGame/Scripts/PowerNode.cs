@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Linq;
 
+// This is attaced to the StaticBody inside PowerNode
 public class PowerNode : Node
 {
 	public bool IsOptionsOpen { get; set; }
@@ -26,11 +27,15 @@ public class PowerNode : Node
 			powerLevel = value;
 
 			powerLabel.Text = PowerLevel.ToString();
+
+			UpdateOptionNodes();
 		}
 	}
 
 	private bool isOptionsInitialised = false;
 	private OptionNode[] optionNodes = new OptionNode[5];
+	private float damageValue = 0;
+	private float damageRate = 0;
 
 	private Label3D powerLabel;
 	private Spatial optionNodeParent;
@@ -164,5 +169,33 @@ public class PowerNode : Node
 		
 		var gameManager = GetNode("/root/Level/GameManager");
 		gameManager.Call("clear_current_power_node");
+	}
+
+	public void RemoveSpecialisedNodes()
+	{
+		Node node = GetNode("GrowthNode");
+		if (node != null)
+		{
+			node.QueueFree();
+		}
+
+		GetParent().GetNode<Particles>("Particle").Emitting = false;
+	}
+
+	private void UpdateOptionNodes()
+	{
+		optionNodes.ToList().ForEach(i => i.UpdateOptionNode());
+	}
+
+	public void Attack()
+	{
+		if (PowerLevel > 0)
+		{
+			PowerLevel--;
+			if (PowerLevel == 0)
+			{
+				RemoveSpecialisedNodes();
+			}
+		}
 	}
 }
