@@ -50,7 +50,6 @@ public class OptionNodeStaticBody : Spatial
 					case PowerNodeType.Growth:
 						particle = GetParent().GetParent().GetParent().GetNode<Particles>("Particle");	
 						particle.ProcessMaterial.Set("color", new Color(0,1,0,1));
-					
 						StartEmitter(particle);
 						break;
 
@@ -63,10 +62,13 @@ public class OptionNodeStaticBody : Spatial
 					case PowerNodeType.Decay:				
 						particle = GetParent().GetParent().GetParent().GetNode<Particles>("Particle");	
 						particle.ProcessMaterial.Set("color", new Color(0.5f,0.15f,0.5f,1));
-			
 						StartEmitter(particle);
 						break;
 				}
+
+				// Play audio
+				AudioStreamPlayer audioStreamPlayer = GetParent().GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+				audioStreamPlayer.Play();
 
 				// Close all Option Nodes
 				powerNode.HideOptionNodes();
